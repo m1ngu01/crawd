@@ -37,8 +37,8 @@ def main():
     rows = to_list()
     print(f"총 {len(rows)}개 (prefix={DANAWA_LIST_PREFIX}, exclude={EXCLUDE_FIRST_CATEGORY})")
     # 샘플 10개 출력
-    for r in rows[:10]:
-        print(f"{r['1차']} > {r['2차']} > {r['3차']} > {r['4차']} :: {r['link']}")
+    # for r in rows[:10]:
+    #     print(f"{r['1차']} > {r['2차']} > {r['3차']} > {r['4차']} :: {r['link']}")
 
 if __name__ == "__main__":
     main()

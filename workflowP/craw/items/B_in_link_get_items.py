@@ -5,7 +5,7 @@ import time
 import os
 from selenium.webdriver.chrome.service import Service
 from pathlib import Path
-from multiprocessing import Pool, cpu_count
+from multiprocessing import Pool, cpu_count, Manager
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -25,6 +25,9 @@ IMPLICIT_WAIT = int(os.environ.get("IMPLICIT_WAIT", "2"))
 WAIT_TIMEOUT = int(os.environ.get("WAIT_TIMEOUT", "10"))
 SAMPLE_N = int(os.environ.get("SAMPLE_N", "7000"))
 WORKERS = int(os.environ.get("WORKERS", "4"))  # 병렬 실행 개수
+CHECKPOINT_N = int(os.environ.get("CHECKPOINT_N", "10"))  # 중간 저장 단위
+# 배치(청크) 크기: 기본 10 → 10개 단위로 부모가 결과 수신/체크포인트 가능
+BATCH_SIZE = int(os.environ.get("BATCH_SIZE", "10"))
 
 LIST_SELECTORS = [
     "div.main_prodlist.main_prodlist_list > ul > li"
@@ -139,6 +142,8 @@ def worker(args):
                     tags_css = ", ".join([
                         "div.prod_main_info > div.prod_info > div.spec-box.spec-box--full > div.spec_list",
                         "div.prod_main_info > div.prod_info > div.spec_list",
+                        "div.prod_info > div.spec-box.spec-box--full > div.spec_list",
+                        "div.prod_info > div.spec-box.spec-box--full > div",
                         "div.spec_list",
                     ])
                     tags_elem = item.find_elements(By.CSS_SELECTOR, tags_css)
@@ -178,6 +183,21 @@ def worker(args):
     return results
 
 # ================== 메인 ==================
+def _read_existing_results(path: Path):
+    if not path.exists():
+        return []
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+def _atomic_write_json(path: Path, data):
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    with tmp.open("w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    tmp.replace(path)
+
 def main():
     rows = to_list()
     if not rows:
@@ -192,14 +212,22 @@ def main():
             uniq.append(r)
             seen.add(lk)
 
+    # 🔹 기존 결과 로드 및 재시작 스킵 구성
+    prev_results = _read_existing_results(OUT_JSON)
+    prev_links = {r.get("link") for r in prev_results if isinstance(r, dict) and r.get("ok")}
+
     # 🔹 처리 개수 제한 (deterministic)
     total = min(SAMPLE_N, len(uniq)) if SAMPLE_N > 0 else len(uniq)
     uniq = uniq[:total]
-    log.info(f"총 {len(rows)}개 중 상위 {total}개 링크 병렬 점검 시작")
+
+    # 🔹 재시작 스킵 적용
+    todo = [r for r in uniq if r.get("link") not in prev_links]
+    skipped = len(uniq) - len(todo)
+    log.info(f"총 {len(rows)}개 중 상위 {total}개 링크 병렬 점검 시작 (이전 완료 {skipped}개 스킵)")
 
     # 🔹 병렬 처리 분할
-    chunk_size = len(uniq) // WORKERS or 1
-    raw_chunks = [uniq[i:i + chunk_size] for i in range(0, len(uniq), chunk_size)]
+    chunk_size = max(1, min(BATCH_SIZE, len(todo))) if todo else 1
+    raw_chunks = [todo[i:i + chunk_size] for i in range(0, len(todo), chunk_size)]
     # 각 청크의 시작 인덱스(1-based)와 총 개수를 함께 전달하여 전역 진행도를 계산
     chunks = []
     start = 1
@@ -209,16 +237,36 @@ def main():
     log.info(f"각 프로세스당 {chunk_size}개 링크 처리 예정")
 
     # 🔹 병렬 실행
-    with Pool(WORKERS) as pool:
-        results = pool.map(worker, chunks)
+    manager = Manager()
+    shared_results = manager.list()  # 병렬 안전 수집
+    lock = manager.Lock()
 
-    # 🔹 결과 합치기
-    merged = [r for batch in results for r in batch]
+    processed_total = 0
+    last_checkpoint_at = 0
 
-    # 🔹 JSON 저장
-    with OUT_JSON.open("w", encoding="utf-8") as f:
-        json.dump(merged, f, indent=2, ensure_ascii=False)
-    log.info(f"✅ 병렬 크롤링 완료: 총 {len(merged)}개 링크 결과 저장 → {OUT_JSON}")
+    def _maybe_checkpoint():
+        nonlocal last_checkpoint_at
+        current_total = len(prev_results) + len(shared_results)
+        if CHECKPOINT_N > 0 and current_total - last_checkpoint_at >= CHECKPOINT_N:
+            with lock:
+                data = list(prev_results) + list(shared_results)
+                _atomic_write_json(OUT_JSON, data)
+                last_checkpoint_at = current_total
+                log.info(f"💾 체크포인트 저장 ({current_total}개) → {OUT_JSON}")
+
+    if todo:
+        with Pool(WORKERS) as pool:
+            for batch_results in pool.imap_unordered(worker, chunks):
+                with lock:
+                    for item in batch_results:
+                        shared_results.append(item)
+                processed_total += len(batch_results)
+                _maybe_checkpoint()
+
+    # 🔹 최종 저장 (이전 + 신규)
+    final_data = list(prev_results) + list(shared_results)
+    _atomic_write_json(OUT_JSON, final_data)
+    log.info(f"✅ 병렬 크롤링 완료: 신규 {len(shared_results)}개, 누적 {len(final_data)}개 저장 → {OUT_JSON}")
 
 """단일 실행 엔트리"""
 if __name__ == "__main__":
