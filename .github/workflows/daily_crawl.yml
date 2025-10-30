@@ -5,6 +5,9 @@ on:
     - cron: "0 0 * * *"  # UTC 기준 매일 00:00
   workflow_dispatch: {}
 
+permissions:
+  contents: write   # ✅ (1) 푸시 권한 부여
+
 jobs:
   crawl:
     runs-on: ubuntu-latest
@@ -12,6 +15,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0           # ✅ (2) 전체 이력 (옵션)
+          persist-credentials: true  # ✅ GITHUB_TOKEN 사용
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -36,7 +42,6 @@ jobs:
       - name: Run daily crawl
         shell: bash
         env:
-          # 설정값 환경변수 (필요 시 조정)
           WORKERS: '2'
           SAMPLE_N: '1250'
           PAGELOAD_TIMEOUT: '15'
@@ -47,6 +52,30 @@ jobs:
         run: |
           set -euo pipefail
           timeout 110m python workflowP/daily_crawl.py
+
+      # ✅ (3) 크롤 결과 커밋 & 푸시 (현재 브랜치)
+      - name: Commit & push crawl outputs
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # git 사용자 설정
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 커밋할 파일 지정 (필요 시 목록 추가/수정)
+          git add workflowP/daily_crawl.log || true
+          git add workflowP/craw/data/quick_text_probe_parallel.json || true
+
+          # 변경 있을 때만 커밋/푸시
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update crawl outputs ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+            git push
+            echo "Pushed crawl outputs."
+          else
+            echo "No changes to commit."
+          fi
 
       - name: Heartbeat stop
         if: always()
