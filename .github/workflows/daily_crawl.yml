@@ -12,11 +12,12 @@ jobs:
   crawl:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0           # ✅ (2) 전체 이력 (옵션)
+          fetch-depth: 0             # ✅ (2) 전체 이력 (옵션)
           persist-credentials: true  # ✅ GITHUB_TOKEN 사용
 
       - name: Setup Python
@@ -39,11 +40,22 @@ jobs:
           ( while sleep 300; do echo "::notice::heartbeat $(date -Is)"; done ) &
           echo $! > .hb.pid
 
+      # --- 전량 재크롤하고 싶을 때만 활성화 ---
+      # CLEAR_CHECKPOINT를 '1'로 바꾸면 이전 진행 기록(json)을 삭제하여 무조건 처음부터 전량 처리합니다.
+      - name: Reset checkpoint (optional full recrawl)
+        if: ${{ env.CLEAR_CHECKPOINT == '1' }}
+        env:
+          CLEAR_CHECKPOINT: '0'  # 기본: 0 (증분). 전량 원하면 1로 변경
+        shell: bash
+        run: |
+          rm -f workflowP/craw/data/quick_text_probe_parallel.json || true
+          echo "Checkpoint cleared."
+
       - name: Run daily crawl
         shell: bash
         env:
           WORKERS: '2'
-          SAMPLE_N: '1250'
+          # SAMPLE_N 제거 → 전체 링크 대상으로 실행
           PAGELOAD_TIMEOUT: '15'
           IMPLICIT_WAIT: '2'
           WAIT_TIMEOUT: '10'
@@ -60,15 +72,13 @@ jobs:
         run: |
           set -euo pipefail
 
-          # git 사용자 설정
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # 커밋할 파일 지정 (필요 시 목록 추가/수정)
+          # 커밋 대상(필요 시 추가)
           git add workflowP/daily_crawl.log || true
           git add workflowP/craw/data/quick_text_probe_parallel.json || true
 
-          # 변경 있을 때만 커밋/푸시
           if ! git diff --cached --quiet; then
             git commit -m "chore: update crawl outputs ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
             git push
