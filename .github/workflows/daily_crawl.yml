@@ -2,23 +2,23 @@ name: Daily Crawl
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # UTC 기준 매일 00:00
+    - cron: "0 0 * * *"  # UTC 기준 매일 00:00 (KST 09:00). KST 00:00 원하면 0 15 * * * 로.
   workflow_dispatch: {}
 
 permissions:
-  contents: write   # ✅ (1) 푸시 권한 부여
+  contents: write
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 360   # ✅ GitHub-hosted 최대(6시간)
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0             # ✅ (2) 전체 이력 (옵션)
-          persist-credentials: true  # ✅ GITHUB_TOKEN 사용
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -41,41 +41,37 @@ jobs:
           echo $! > .hb.pid
 
       # --- 전량 재크롤하고 싶을 때만 활성화 ---
-      # CLEAR_CHECKPOINT를 '1'로 바꾸면 이전 진행 기록(json)을 삭제하여 무조건 처음부터 전량 처리합니다.
       - name: Reset checkpoint (optional full recrawl)
         if: ${{ env.CLEAR_CHECKPOINT == '1' }}
         env:
-          CLEAR_CHECKPOINT: '0'  # 기본: 0 (증분). 전량 원하면 1로 변경
+          CLEAR_CHECKPOINT: '0'
         shell: bash
         run: |
           rm -f workflowP/craw/data/quick_text_probe_parallel.json || true
           echo "Checkpoint cleared."
 
-      - name: Run daily crawl
+      - name: Run daily crawl (max ~355m)
         shell: bash
         env:
           WORKERS: '2'
-          # SAMPLE_N 제거 → 전체 링크 대상으로 실행
           PAGELOAD_TIMEOUT: '15'
           IMPLICIT_WAIT: '2'
           WAIT_TIMEOUT: '10'
-          SCRIPT_TIMEOUT: '6000'
+          SCRIPT_TIMEOUT: '21000'   # ✅ 내부 타이머도 충분히 크게
           PYTHONUNBUFFERED: '1'
         run: |
           set -euo pipefail
-          timeout 110m python workflowP/daily_crawl.py
+          # ✅ step-level 하드타임아웃: 355분 (나머지 단계 실행 여유 확보)
+          timeout 355m python workflowP/daily_crawl.py
 
-      # ✅ (3) 크롤 결과 커밋 & 푸시 (현재 브랜치)
       - name: Commit & push crawl outputs
         if: always()
         shell: bash
         run: |
           set -euo pipefail
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # 커밋 대상(필요 시 추가)
           git add workflowP/daily_crawl.log || true
           git add workflowP/craw/data/quick_text_probe_parallel.json || true
 
@@ -91,7 +87,7 @@ jobs:
         if: always()
         shell: bash
         run: |
-          if [ -f .hb.pid ]; then kill $(cat .hb.pid) || true; fi
+          if [ -f .hb.pid ]; then kill "$(cat .hb.pid)" || true; fi
 
       - name: Upload crawl logs
         if: always()
