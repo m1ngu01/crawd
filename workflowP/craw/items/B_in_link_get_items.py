@@ -140,11 +140,10 @@ def worker(args):
 
                     # ================== 스펙/태그 ==================
                     tags_css = ", ".join([
-                        "div.prod_main_info > div.prod_info > div.spec-box.spec-box--full > div.spec_list",
-                        "div.prod_main_info > div.prod_info > div.spec_list",
-                        "div.prod_info > div.spec-box.spec-box--full > div.spec_list",
-                        "div.prod_info > div.spec-box.spec-box--full > div",
-                        "div.spec_list",
+                        "div.prod_main_info div.prod_info div.spec-box[data-simple-description-open-area='Y'] div.spec_list",
+                        "div.prod_main_info div.prod_info div.spec-box:not([style*='display:none']) div.spec_list",
+                        "div.prod_info div.spec-box[data-simple-description-open-area='Y'] div.spec_list",
+                        "div.prod_info div.spec-box:not([style*='display:none']) div.spec_list",
                     ])
                     tags_elem = item.find_elements(By.CSS_SELECTOR, tags_css)
                     tags = clean_text(tags_elem[0].text if tags_elem else "")

@@ -2,7 +2,7 @@ name: Daily Crawl
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # UTC 기준 매일 00:00 (KST 09:00). KST 00:00 원하면 0 15 * * * 로.
+    - cron: "0 */4 * * *"  # UTC 기준 4시간 간격 실행.
   workflow_dispatch: {}
 
 permissions:
