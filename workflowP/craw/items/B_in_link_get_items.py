@@ -3,6 +3,7 @@ import json
 import re
 import time
 import os
+import datetime
 from selenium.webdriver.chrome.service import Service
 from pathlib import Path
 from multiprocessing import Pool, cpu_count, Manager
@@ -18,7 +19,13 @@ THIS_FILE = Path(__file__).resolve()
 PROJ_ROOT = THIS_FILE.parents[2]
 DATA_DIR = PROJ_ROOT / "craw" / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
-OUT_JSON = DATA_DIR / "quick_text_probe_parallel.json"
+OUTPUT_DIR = DATA_DIR / "quick_text_probe_parallel"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+LEGACY_JSON_PATH = DATA_DIR / "quick_text_probe_parallel.json"
+MANIFEST_PATH = OUTPUT_DIR / "manifest.json"
+STATE_PATH = OUTPUT_DIR / "state.json"
+STATUS_PATH = DATA_DIR / "quick_text_probe_parallel.status.json"
+JSON_PART_RECORDS = max(1, int(os.environ.get("JSON_PART_RECORDS", "500")))
 
 PAGELOAD_TIMEOUT = int(os.environ.get("PAGELOAD_TIMEOUT", "10"))
 IMPLICIT_WAIT = int(os.environ.get("IMPLICIT_WAIT", "2"))
@@ -49,6 +56,31 @@ def clean_text(s: str) -> str:
     s = re.sub(r"[ \t\r\f]+", " ", s)
     s = re.sub(r"\n{3,}", "\n\n", s)
     return s.strip()
+
+def parse_float(value: str):
+    """문자열에서 실수 추출 (없으면 None)"""
+    if not value:
+        return None
+    cleaned = value.replace(",", "")
+    match = re.search(r"\d+(?:\.\d+)?", cleaned)
+    if not match:
+        return None
+    try:
+        return float(match.group())
+    except ValueError:
+        return None
+
+def parse_int(value: str):
+    """문자열에서 정수 추출 (없으면 None)"""
+    if not value:
+        return None
+    digits = re.sub(r"[^\d]", "", value)
+    if not digits:
+        return None
+    try:
+        return int(digits)
+    except ValueError:
+        return None
 
 def find_product_items(driver):
     """상품 리스트 탐색 (로드 대기 포함)"""
@@ -155,12 +187,36 @@ def worker(args):
                     )
                     price = clean_text(price_els[0].text if price_els else "")
 
+                    # ================== 평점/리뷰 ==================
+                    score_els = item.find_elements(
+                        By.CSS_SELECTOR,
+                        "div.prod_info > div.prod_sub_info > div > div > a > div > span.text__score"
+                    )
+                    raw_score = clean_text(score_els[0].text if score_els else "")
+                    rating = parse_float(raw_score)
+
+                    review_els = item.find_elements(
+                        By.CSS_SELECTOR,
+                        "div.prod_info > div.prod_sub_info > div > div > a > div > div.text__review > span.text__number"
+                    )
+                    raw_review_count = clean_text(review_els[0].text if review_els else "")
+                    review_count = parse_int(raw_review_count)
+
+                    rating_weighted = None
+                    if rating is not None and review_count is not None:
+                        rating_weighted = round(rating * review_count, 2)
+
                     # ================== 저장 ==================
                     result["products"].append({
                         "image": image,
                         "prod_name": prod_name,
                         "tags": tags,
-                        "price": price
+                        "price": price,
+                        "rating": rating,
+                        "review_count": review_count,
+                        "rating_weighted": rating_weighted,
+                        "raw_rating_text": raw_score,
+                        "raw_review_text": raw_review_count,
                     })
 
                 except Exception as e:
@@ -182,20 +238,118 @@ def worker(args):
     return results
 
 # ================== 메인 ==================
-def _read_existing_results(path: Path):
-    if not path.exists():
-        return []
-    try:
-        with path.open("r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return []
+def _read_existing_results():
+    """
+    기존 결과를 로드한다. 분할 저장(manifest 기반) 또는 레거시 단일 JSON 모두 지원.
+    """
+    results = []
+    manifest = None
+    if MANIFEST_PATH.exists():
+        try:
+            with MANIFEST_PATH.open("r", encoding="utf-8") as mf:
+                manifest = json.load(mf)
+        except Exception as exc:
+            log.warning("manifest 읽기 실패: %s", exc)
+            manifest = None
+        if manifest:
+            for part in manifest.get("parts", []):
+                filename = part.get("file")
+                if not filename:
+                    continue
+                part_path = OUTPUT_DIR / filename
+                if not part_path.exists():
+                    continue
+                with part_path.open("r", encoding="utf-8") as pf:
+                    for line in pf:
+                        line = line.strip()
+                        if not line:
+                            continue
+                        try:
+                            results.append(json.loads(line))
+                        except json.JSONDecodeError:
+                            continue
+            return results
+    if LEGACY_JSON_PATH.exists():
+        try:
+            with LEGACY_JSON_PATH.open("r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as exc:
+            log.warning("레거시 JSON 로드 실패: %s", exc)
+            return []
+    return results
 
-def _atomic_write_json(path: Path, data):
-    tmp = path.with_suffix(path.suffix + ".tmp")
-    with tmp.open("w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    tmp.replace(path)
+def _chunk_list(items, size):
+    for idx in range(0, len(items), size):
+        yield items[idx: idx + size]
+
+def _write_sharded_results(data):
+    """
+    데이터를 JSONL 파트로 분할 저장하고 manifest/state/status를 갱신한다.
+    """
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.datetime.now().isoformat()
+    tmp_parts = []
+    part_entries = []
+    for index, chunk in enumerate(_chunk_list(data, JSON_PART_RECORDS), start=1):
+        filename = f"part_{index:05}.jsonl"
+        final_path = OUTPUT_DIR / filename
+        tmp_path = final_path.with_suffix(final_path.suffix + ".tmp")
+        with tmp_path.open("w", encoding="utf-8") as f:
+            for row in chunk:
+                f.write(json.dumps(row, ensure_ascii=False))
+                f.write("\n")
+        tmp_parts.append((tmp_path, final_path))
+        part_entries.append({"file": filename, "count": len(chunk)})
+
+    for existing in OUTPUT_DIR.glob("part_*.jsonl"):
+        try:
+            existing.unlink()
+        except OSError:
+            pass
+
+    for tmp_path, final_path in tmp_parts:
+        tmp_path.replace(final_path)
+
+    manifest = {
+        "parts": part_entries,
+        "total_count": len(data),
+        "updated_at": timestamp,
+        "part_size_limit": JSON_PART_RECORDS,
+    }
+    tmp_manifest = MANIFEST_PATH.with_suffix(".tmp")
+    with tmp_manifest.open("w", encoding="utf-8") as mf:
+        json.dump(manifest, mf, indent=2, ensure_ascii=False)
+    tmp_manifest.replace(MANIFEST_PATH)
+
+    state = {
+        "links": [item.get("link") for item in data if isinstance(item, dict) and item.get("ok")],
+        "updated_at": timestamp,
+    }
+    tmp_state = STATE_PATH.with_suffix(".tmp")
+    with tmp_state.open("w", encoding="utf-8") as sf:
+        json.dump(state, sf, indent=2, ensure_ascii=False)
+    tmp_state.replace(STATE_PATH)
+
+    if LEGACY_JSON_PATH.exists():
+        try:
+            LEGACY_JSON_PATH.unlink()
+        except OSError:
+            pass
+
+def _write_status(processed_links, pending_links, skipped_links, total_links, eligible_links, complete_total):
+    payload = {
+        "timestamp": datetime.datetime.now().isoformat(),
+        "processed_links": processed_links,
+        "pending_links": pending_links,
+        "skipped_links": skipped_links,
+        "total_links": total_links,
+        "eligible_links": eligible_links,
+        "complete_total": complete_total,
+    }
+    tmp_status = STATUS_PATH.with_suffix(".tmp")
+    with tmp_status.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+    tmp_status.replace(STATUS_PATH)
 
 def main():
     rows = to_list()
@@ -212,7 +366,7 @@ def main():
             seen.add(lk)
 
     # 🔹 기존 결과 로드 및 재시작 스킵 구성
-    prev_results = _read_existing_results(OUT_JSON)
+    prev_results = _read_existing_results()
     prev_links = {r.get("link") for r in prev_results if isinstance(r, dict) and r.get("ok")}
 
     # 🔹 처리 개수 제한 (deterministic)
@@ -240,7 +394,7 @@ def main():
     shared_results = manager.list()  # 병렬 안전 수집
     lock = manager.Lock()
 
-    processed_total = 0
+    pending_initial = len(todo)
     last_checkpoint_at = 0
 
     def _maybe_checkpoint():
@@ -248,10 +402,13 @@ def main():
         current_total = len(prev_results) + len(shared_results)
         if CHECKPOINT_N > 0 and current_total - last_checkpoint_at >= CHECKPOINT_N:
             with lock:
-                data = list(prev_results) + list(shared_results)
-                _atomic_write_json(OUT_JSON, data)
+                current_shared = list(shared_results)
+                data = list(prev_results) + current_shared
+                _write_sharded_results(data)
                 last_checkpoint_at = current_total
-                log.info(f"💾 체크포인트 저장 ({current_total}개) → {OUT_JSON}")
+                pending_links = max(0, pending_initial - len(current_shared))
+                _write_status(len(current_shared), pending_links, skipped, len(rows), len(uniq), len(data))
+                log.info(f"💾 체크포인트 저장 ({current_total}개) → {OUTPUT_DIR}")
 
     if todo:
         with Pool(WORKERS) as pool:
@@ -259,13 +416,19 @@ def main():
                 with lock:
                     for item in batch_results:
                         shared_results.append(item)
-                processed_total += len(batch_results)
                 _maybe_checkpoint()
 
     # 🔹 최종 저장 (이전 + 신규)
-    final_data = list(prev_results) + list(shared_results)
-    _atomic_write_json(OUT_JSON, final_data)
-    log.info(f"✅ 병렬 크롤링 완료: 신규 {len(shared_results)}개, 누적 {len(final_data)}개 저장 → {OUT_JSON}")
+    final_shared = list(shared_results)
+    final_data = list(prev_results) + final_shared
+    force_write = bool(final_shared) or not MANIFEST_PATH.exists() or LEGACY_JSON_PATH.exists()
+    if force_write:
+        _write_sharded_results(final_data)
+    else:
+        log.info("💾 신규 결과 없음, 기존 분할 파일 유지")
+    pending_links = max(0, pending_initial - len(final_shared))
+    _write_status(len(final_shared), pending_links, skipped, len(rows), len(uniq), len(final_data))
+    log.info(f"✅ 병렬 크롤링 완료: 신규 {len(final_shared)}개, 누적 {len(final_data)}개 저장 → {OUTPUT_DIR}")
 
 """단일 실행 엔트리"""
 if __name__ == "__main__":

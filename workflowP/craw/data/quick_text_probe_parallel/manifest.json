@@ -1,0 +1,47 @@
+{
+  "parts": [
+    {
+      "file": "part_00001.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00002.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00003.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00004.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00005.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00006.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00007.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00008.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00009.jsonl",
+      "count": 500
+    },
+    {
+      "file": "part_00010.jsonl",
+      "count": 239
+    }
+  ],
+  "total_count": 4739,
+  "updated_at": "2025-11-03T17:50:48.320969",
+  "part_size_limit": 500
+}

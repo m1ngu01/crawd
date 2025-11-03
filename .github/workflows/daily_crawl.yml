@@ -2,7 +2,7 @@ name: Daily Crawl
 
 on:
   schedule:
-    - cron: "0 */4 * * *"  # UTC 기준 4시간 간격 실행.
+    - cron: "0 */8 * * *"  # UTC 기준 8시간 간격 실행.
   workflow_dispatch: {}
 
 permissions:
@@ -48,6 +48,8 @@ jobs:
         shell: bash
         run: |
           rm -f workflowP/craw/data/quick_text_probe_parallel.json || true
+          rm -rf workflowP/craw/data/quick_text_probe_parallel || true
+          rm -f workflowP/craw/data/quick_text_probe_parallel.status.json || true
           echo "Checkpoint cleared."
 
       - name: Run daily crawl (max ~355m)
@@ -58,6 +60,8 @@ jobs:
           IMPLICIT_WAIT: '2'
           WAIT_TIMEOUT: '10'
           SCRIPT_TIMEOUT: '21000'   # ✅ 내부 타이머도 충분히 크게
+          CRAWL_CYCLE_LIMIT: '2'
+          CRAWL_CYCLE_DELAY: '60'
           PYTHONUNBUFFERED: '1'
         run: |
           set -euo pipefail
@@ -73,7 +77,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add workflowP/daily_crawl.log || true
-          git add workflowP/craw/data/quick_text_probe_parallel.json || true
+          git add -A workflowP/craw/data/quick_text_probe_parallel || true
+          git add -u workflowP/craw/data || true
 
           if ! git diff --cached --quiet; then
             git commit -m "chore: update crawl outputs ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
@@ -96,5 +101,6 @@ jobs:
           name: daily-crawl-logs
           path: |
             workflowP/daily_crawl.log
-            workflowP/craw/data/quick_text_probe_parallel.json
+            workflowP/craw/data/quick_text_probe_parallel/
+            workflowP/craw/data/quick_text_probe_parallel.status.json
           if-no-files-found: warn

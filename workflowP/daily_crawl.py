@@ -6,6 +6,7 @@ import os
 import datetime
 import time
 import platform
+import json
 
 BASE = Path(__file__).resolve().parent
 CRAW_DIR = BASE  # 루트 디렉토리로 설정
@@ -50,15 +51,20 @@ def color(msg: str, c: str) -> str:
     return f"{c}{msg}{C.RESET}"
 
 # 실행할 스크립트 목록 - 상대 경로로 수정
-SCRIPTS = [
-    # BASE / "craw" / "category" / "craw_danawa_all_categories.py",
-    BASE / "craw" / "items" / "A_link_filter.py",
-    BASE / "craw" / "items" / "B_in_link_get_items.py",
+CATEGORY_SCRIPT = BASE / "craw" / "category" / "craw_danawa_all_categories.py"
+FILTER_SCRIPT = BASE / "craw" / "items" / "A_link_filter.py"
+ITEM_SCRIPT = BASE / "craw" / "items" / "B_in_link_get_items.py"
+PIPELINE = [
+    ("category", CATEGORY_SCRIPT),
+    ("link-filter", FILTER_SCRIPT),
+    ("items", ITEM_SCRIPT),
 ]
 
 # 개별 스크립트 실행 최대 시간(초). 0이면 무제한
 SCRIPT_TIMEOUT = int(os.environ.get("SCRIPT_TIMEOUT", "0"))
 MAX_RETRIES = int(os.environ.get("MAX_RETRIES", "3"))
+CYCLE_LIMIT = max(1, int(os.environ.get("CRAWL_CYCLE_LIMIT", "1")))
+CYCLE_DELAY = max(0, int(os.environ.get("CRAWL_CYCLE_DELAY", "0")))
 
 def check_file_exists(path):
     if not os.path.exists(path):
@@ -142,6 +148,20 @@ def _write_github_summary(summary: str):
     except Exception:
         pass
 
+def _read_item_status():
+    """
+    아이템 크롤러가 남긴 상태 파일(선택)을 읽어와 다음 루프 조건 판단에 활용.
+    """
+    status_path = BASE / "craw" / "data" / "quick_text_probe_parallel.status.json"
+    if not status_path.exists():
+        return None
+    try:
+        with status_path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as exc:
+        logger.warning(color(f"아이템 상태 파일 파싱 실패: {exc}", C.YELLOW))
+        return None
+
 def main():
     start_iso = datetime.datetime.now().isoformat()
     logger.info(color(f"=== daily_crawl 시작 @ {start_iso} ===", C.BOLD))
@@ -151,23 +171,33 @@ def main():
         return
 
     success, failed = [], []
-    for s in SCRIPTS:
-        ok = run_script(s, SCRIPT_TIMEOUT, MAX_RETRIES)
-        if ok:
-            success.append(s)
-        else:
-            failed.append(s)
-        # 중간 실패라도 다음 작업 계속 진행
+    for cycle in range(1, CYCLE_LIMIT + 1):
+        logger.info(color(f"=== 🔁 크롤 루프 {cycle}/{CYCLE_LIMIT} 시작 ===", C.BOLD))
+        for stage_name, script_path in PIPELINE:
+            ok = run_script(script_path, SCRIPT_TIMEOUT, MAX_RETRIES)
+            label = f"{stage_name}#{cycle}: {script_path.name}"
+            if ok:
+                success.append(label)
+            else:
+                failed.append(label)
+        status = _read_item_status()
+        if status:
+            remaining = status.get("pending_links")
+            processed = status.get("processed_links")
+            logger.info(color(f"상태 요약: 신규 {processed}, 대기 {remaining}", C.BLUE))
+        if cycle < CYCLE_LIMIT and CYCLE_DELAY:
+            logger.info(color(f"{CYCLE_DELAY}s 대기 후 다음 루프 진행", C.DIM))
+            time.sleep(CYCLE_DELAY)
 
     end_iso = datetime.datetime.now().isoformat()
     # 요약 출력(색상)
     logger.info(color("=== 실행 요약 ===", C.BOLD))
     logger.info(color(f"성공: {len(success)}", C.GREEN))
-    for p in success:
-        logger.info(color(f"  ✔ {p}", C.GREEN))
+    for entry in success:
+        logger.info(color(f"  ✔ {entry}", C.GREEN))
     logger.info(color(f"실패: {len(failed)}", C.RED))
-    for p in failed:
-        logger.info(color(f"  ✖ {p}", C.RED))
+    for entry in failed:
+        logger.info(color(f"  ✖ {entry}", C.RED))
     logger.info(color(f"로그 파일: {LOG_PATH}", C.BLUE))
     logger.info(color(f"=== daily_crawl 종료 @ {end_iso} ===", C.BOLD))
 
@@ -181,10 +211,10 @@ def main():
     ]
     if success:
         md.append("### Succeeded")
-        md += [f"- {p}" for p in success]
+        md += [f"- {entry}" for entry in success]
     if failed:
         md.append("### Failed")
-        md += [f"- {p}" for p in failed]
+        md += [f"- {entry}" for entry in failed]
     _write_github_summary("\n".join(md))
 
 if __name__ == "__main__":
