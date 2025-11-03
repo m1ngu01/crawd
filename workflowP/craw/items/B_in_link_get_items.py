@@ -163,12 +163,12 @@ def worker(args):
                     image = img_el.get_attribute("data-original") or img_el.get_attribute("src")
 
                     # ================== 상품명 ==================
-                    prod_name = clean_text(
-                        item.find_element(
-                            By.CSS_SELECTOR,
-                            "div.prod_main_info > div.prod_info > p > a"
-                        ).text
+                    prod_anchor = item.find_element(
+                        By.CSS_SELECTOR,
+                        "div.prod_main_info > div.prod_info > p > a"
                     )
+                    prod_name = clean_text(prod_anchor.text)
+                    prod_link = prod_anchor.get_attribute("href") or ""
 
                     # ================== 스펙/태그 ==================
                     tags_css = ", ".join([
@@ -208,6 +208,7 @@ def worker(args):
 
                     # ================== 저장 ==================
                     result["products"].append({
+                        "link": prod_link,
                         "image": image,
                         "prod_name": prod_name,
                         "tags": tags,

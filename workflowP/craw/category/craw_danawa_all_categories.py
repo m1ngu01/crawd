@@ -68,8 +68,13 @@ def clean_category_text(driver, el):
             if t:
                 full = full.replace(t, "")
         return " ".join(full.split())
+    except StaleElementReferenceException:
+        return ""
     except Exception:
-        return (el.text or "").strip()
+        try:
+            return (el.text or "").strip()
+        except Exception:
+            return ""
 
 def visible_only(elems):
     return [e for e in elems if getattr(e, "is_displayed", lambda: False)()]
@@ -165,46 +170,58 @@ def main():
 
             second_items = visible_only(second_panel.find_elements(By.CSS_SELECTOR, "ul > li > a"))
             for second in second_items:
-                second_text = clean_category_text(driver, second)
-                if not second_text:
-                    continue
-                logger.info(f"  └─ 2차: {second_text}")
-
-                # 2차 → 3차
-                hover(actions, second)
-                third_panel = wait_panel(driver, second, ["category__3depth"])
-
-                if not third_panel:
-                    href = (second.get_attribute("href") or "").strip()
-                    rows.append({"1차": first_text, "2차": second_text, "3차": "", "4차": "", "link": href})
-                    logger.info(f"      [링크] {href}")
-                    continue
-
-                third_items = visible_only(third_panel.find_elements(By.CSS_SELECTOR, "ul > li > a"))
-                for third in third_items:
-                    third_text = clean_category_text(driver, third)
-                    if not third_text:
+                try:
+                    second_text = clean_category_text(driver, second)
+                    if not second_text:
                         continue
-                    logger.info(f"        └─ 3차: {third_text}")
+                    logger.info(f"  └─ 2차: {second_text}")
 
-                    # 3차 → 4차
-                    hover(actions, third)
-                    fourth_panel = wait_panel(driver, third, ["category__4depth"])
+                    # 2차 → 3차
+                    hover(actions, second)
+                    third_panel = wait_panel(driver, second, ["category__3depth"])
 
-                    if not fourth_panel:
-                        href = (third.get_attribute("href") or "").strip()
-                        rows.append({"1차": first_text, "2차": second_text, "3차": third_text, "4차": "", "link": href})
-                        logger.info(f"            [링크] {href}")
+                    if not third_panel:
+                        href = (second.get_attribute("href") or "").strip()
+                        rows.append({"1차": first_text, "2차": second_text, "3차": "", "4차": "", "link": href})
+                        logger.info(f"      [링크] {href}")
                         continue
 
-                    fourth_items = visible_only(fourth_panel.find_elements(By.CSS_SELECTOR, "ul > li > a"))
-                    for fourth in fourth_items:
-                        fourth_text = clean_category_text(driver, fourth)
-                        if not fourth_text:
+                    third_items = visible_only(third_panel.find_elements(By.CSS_SELECTOR, "ul > li > a"))
+                    for third in third_items:
+                        try:
+                            third_text = clean_category_text(driver, third)
+                            if not third_text:
+                                continue
+                            logger.info(f"        └─ 3차: {third_text}")
+
+                            # 3차 → 4차
+                            hover(actions, third)
+                            fourth_panel = wait_panel(driver, third, ["category__4depth"])
+
+                            if not fourth_panel:
+                                href = (third.get_attribute("href") or "").strip()
+                                rows.append(
+                                    {"1차": first_text, "2차": second_text, "3차": third_text, "4차": "", "link": href}
+                                )
+                                logger.info(f"            [링크] {href}")
+                                continue
+
+                            fourth_items = visible_only(fourth_panel.find_elements(By.CSS_SELECTOR, "ul > li > a"))
+                            for fourth in fourth_items:
+                                fourth_text = clean_category_text(driver, fourth)
+                                if not fourth_text:
+                                    continue
+                                href = (fourth.get_attribute("href") or "").strip()
+                                rows.append(
+                                    {"1차": first_text, "2차": second_text, "3차": third_text, "4차": fourth_text, "link": href}
+                                )
+                                logger.info(f"            └─ 4차: {fourth_text} -> {href}")
+                        except StaleElementReferenceException:
+                            logger.debug("3차 카테고리 요소가 갱신되어 건너뜀")
                             continue
-                        href = (fourth.get_attribute("href") or "").strip()
-                        rows.append({"1차": first_text, "2차": second_text, "3차": third_text, "4차": fourth_text, "link": href})
-                        logger.info(f"            └─ 4차: {fourth_text} -> {href}")
+                except StaleElementReferenceException:
+                    logger.debug("2차 카테고리 요소가 갱신되어 건너뜀")
+                    continue
 
     finally:
         driver.quit()
@@ -219,9 +236,9 @@ def main():
     with JSON_PATH.open("w", encoding="utf-8") as f:
         json.dump(rows, f, indent=2, ensure_ascii=False)
 
-    logger.info(f"✅ 완료: 총 {len(rows)}개 항목")
-    logger.info(f" - {CSV_PATH}")
-    logger.info(f" - {JSON_PATH}")
+    logger.info(
+        f"✅ 완료: 총 {len(rows)}개 항목 | CSV 저장 경로: {CSV_PATH} | JSON 저장 경로: {JSON_PATH}"
+    )
 
 if __name__ == "__main__":
     logger.info("================= Danawa 카테고리 크롤러 시작 =================")
