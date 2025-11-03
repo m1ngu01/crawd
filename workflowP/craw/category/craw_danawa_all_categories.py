@@ -79,6 +79,20 @@ def clean_category_text(driver, el):
 def visible_only(elems):
     return [e for e in elems if getattr(e, "is_displayed", lambda: False)()]
 
+def log_category_path(first="", second="", third="", fourth="", href=""):
+    parts = []
+    if first:
+        parts.append(f"1차: {first}")
+    if second:
+        parts.append(f"2차: {second}")
+    if third:
+        parts.append(f"3차: {third}")
+    if fourth:
+        parts.append(f"4차: {fourth}")
+    if href:
+        parts.append(f"링크: {href}")
+    logger.info(" | ".join(parts))
+
 def hover(actions, el, pause=HOVER_DELAY):
     try:
         actions.move_to_element(el).perform()
@@ -160,7 +174,7 @@ def main():
             if not first_text:
                 continue
 
-            logger.info(f"1차: {first_text}")
+            log_category_path(first=first_text)
 
             # 1차 → 2차
             hover(actions, first_menu)
@@ -174,7 +188,7 @@ def main():
                     second_text = clean_category_text(driver, second)
                     if not second_text:
                         continue
-                    logger.info(f"  └─ 2차: {second_text}")
+                    log_category_path(first=first_text, second=second_text)
 
                     # 2차 → 3차
                     hover(actions, second)
@@ -183,7 +197,7 @@ def main():
                     if not third_panel:
                         href = (second.get_attribute("href") or "").strip()
                         rows.append({"1차": first_text, "2차": second_text, "3차": "", "4차": "", "link": href})
-                        logger.info(f"      [링크] {href}")
+                        log_category_path(first=first_text, second=second_text, href=href)
                         continue
 
                     third_items = visible_only(third_panel.find_elements(By.CSS_SELECTOR, "ul > li > a"))
@@ -192,7 +206,7 @@ def main():
                             third_text = clean_category_text(driver, third)
                             if not third_text:
                                 continue
-                            logger.info(f"        └─ 3차: {third_text}")
+                            log_category_path(first=first_text, second=second_text, third=third_text)
 
                             # 3차 → 4차
                             hover(actions, third)
@@ -203,7 +217,7 @@ def main():
                                 rows.append(
                                     {"1차": first_text, "2차": second_text, "3차": third_text, "4차": "", "link": href}
                                 )
-                                logger.info(f"            [링크] {href}")
+                                log_category_path(first=first_text, second=second_text, third=third_text, href=href)
                                 continue
 
                             fourth_items = visible_only(fourth_panel.find_elements(By.CSS_SELECTOR, "ul > li > a"))
@@ -215,7 +229,13 @@ def main():
                                 rows.append(
                                     {"1차": first_text, "2차": second_text, "3차": third_text, "4차": fourth_text, "link": href}
                                 )
-                                logger.info(f"            └─ 4차: {fourth_text} -> {href}")
+                                log_category_path(
+                                    first=first_text,
+                                    second=second_text,
+                                    third=third_text,
+                                    fourth=fourth_text,
+                                    href=href,
+                                )
                         except StaleElementReferenceException:
                             logger.debug("3차 카테고리 요소가 갱신되어 건너뜀")
                             continue
