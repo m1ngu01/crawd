@@ -87,14 +87,44 @@ def parse_int(value: str):
     except ValueError:
         return None
 
-def ensure_list_view(driver):
+def short_exception(exc: Exception) -> str:
+    """
+    Selenium 예외 등에서 스택트레이스가 포함된 메시지를 간결하게 정리한다.
+    """
+    text = ""
+    for attr in ("msg", "message"):
+        candidate = getattr(exc, attr, None)
+        if isinstance(candidate, str) and candidate.strip():
+            text = candidate
+            break
+    if not text:
+        text = str(exc) if exc else ""
+    if "Stacktrace:" in text:
+        text = text.split("Stacktrace:", 1)[0]
+    if text.lower().startswith("message"):
+        parts = text.split(":", 1)
+        if len(parts) == 2:
+            text = parts[1]
+    text = text.strip()
+    if not text:
+        text = exc.__class__.__name__ if exc else ""
+    return text
+
+def ensure_list_view(driver, page_url=None):
     """목록형(리스트) 보기로 전환"""
+    if not page_url:
+        try:
+            page_url = driver.current_url
+        except Exception:
+            page_url = None
+    url_for_log = page_url or "<unknown>"
+
     try:
         list_button = WebDriverWait(driver, WAIT_TIMEOUT).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, LIST_VIEW_BUTTON_SELECTOR))
         )
     except Exception as exc:
-        log.warning("목록형 보기 탭을 찾지 못했습니다: %s", exc)
+        log.warning("목록형 보기 탭을 찾지 못했습니다 (url=%s): %s", url_for_log, short_exception(exc))
         return False
 
     try:
@@ -116,7 +146,7 @@ def ensure_list_view(driver):
         time.sleep(0.5)
         return True
     except Exception as exc:
-        log.warning("목록형 보기 전환 실패: %s", exc)
+        log.warning("목록형 보기 전환 실패 (url=%s): %s", url_for_log, short_exception(exc))
         return False
 
 def find_product_items(driver):
@@ -136,7 +166,20 @@ def find_product_items(driver):
 # ================== 워커 함수 ==================
 def worker(args):
     """링크 리스트 한 묶음을 병렬로 크롤링"""
-    link_batch, start_index, total = args
+    if len(args) == 4:
+        link_batch, start_index, total, skipped = args
+    else:
+        link_batch, start_index, total = args
+        skipped = 0
+
+    progress_total = total - skipped
+    if progress_total <= 0:
+        progress_total = len(link_batch) or 1
+
+    if skipped:
+        progress_total_display = f"{total - skipped}"
+    else:
+        progress_total_display = str(progress_total)
     results = []
 
     # 크롬 옵션 설정
@@ -171,12 +214,12 @@ def worker(args):
     driver.implicitly_wait(IMPLICIT_WAIT)
 
     # 진행도 출력 폭 계산 (예: 1250 -> 폭 5 에 맞춰 우측 언더스코어 패딩)
-    width = max(5, len(str(total)))
+    width = max(5, len(str(progress_total)))
 
     for idx, r in enumerate(link_batch, start=0):
         cur = start_index + idx
         cur_disp = f"{cur}{' ' * (width - len(str(cur)))}"
-        prog_str = f"진행도 [{cur_disp}/ {total}]"
+        prog_str = f"진행도 [{cur_disp}/ {progress_total_display}]"
         link = r.get("link")
         path = [r.get(f"{i}차", "") for i in range(1, 5)]
         result = {"link": link, "path": path, "ok": False, "products": []}
@@ -185,7 +228,7 @@ def worker(args):
             driver.get(link)
             time.sleep(2)
 
-            ensure_list_view(driver)
+            ensure_list_view(driver, page_url=link)
 
             # 상품 리스트 탐색
             items, used_sel = find_product_items(driver)
@@ -272,7 +315,7 @@ def worker(args):
             log.info(f"✅ {len(result['products'])}개 완료 | {prog_str} - {path[1] if len(path) > 1 else path[0]}")
 
         except Exception as e:
-            log.warning(f"❌ {path[-1] if path[-1] else link} 에러: {e}")
+            log.warning(f"❌ {path[-1] if path[-1] else link} 에러: {short_exception(e)}")
 
     driver.quit()
     return results
@@ -425,7 +468,7 @@ def main():
     chunks = []
     start = 1
     for batch in raw_chunks:
-        chunks.append((batch, start, total))
+        chunks.append((batch, start, total, skipped))
         start += len(batch)
     log.info(f"각 프로세스당 {chunk_size}개 링크 처리 예정")
 
