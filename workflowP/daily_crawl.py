@@ -60,6 +60,12 @@ PIPELINE = [
     ("items", ITEM_SCRIPT),
 ]
 
+CATEGORY_REFRESH_DAYS = int(os.environ.get("CATEGORY_REFRESH_DAYS", "7"))
+CATEGORY_OUTPUT_CANDIDATES = [
+    BASE / "craw" / "data" / "danawa_category_rows.csv",
+    BASE / "craw" / "data" / "danawa_category_rows.json",
+]
+
 # 개별 스크립트 실행 최대 시간(초). 0이면 무제한
 SCRIPT_TIMEOUT = int(os.environ.get("SCRIPT_TIMEOUT", "0"))
 MAX_RETRIES = int(os.environ.get("MAX_RETRIES", "3"))
@@ -162,6 +168,36 @@ def _read_item_status():
         logger.warning(color(f"아이템 상태 파일 파싱 실패: {exc}", C.YELLOW))
         return None
 
+def _latest_category_mtime():
+    """
+    카테고리 산출물의 최신 수정 시각(초 단위)을 반환.
+    """
+    mtimes = []
+    for path in CATEGORY_OUTPUT_CANDIDATES:
+        if path.exists():
+            try:
+                mtimes.append(path.stat().st_mtime)
+            except OSError:
+                continue
+    if not mtimes:
+        return None
+    return max(mtimes)
+
+def _should_run_category(now=None):
+    """
+    카테고리 크롤러를 실행해야 하는지 여부와 마지막 수정 시각을 반환.
+    """
+    if CATEGORY_REFRESH_DAYS <= 0:
+        return True, None
+    now = now or datetime.datetime.now()
+    latest = _latest_category_mtime()
+    if latest is None:
+        return True, None
+    last_dt = datetime.datetime.fromtimestamp(latest)
+    if now - last_dt >= datetime.timedelta(days=CATEGORY_REFRESH_DAYS):
+        return True, last_dt
+    return False, last_dt
+
 def main():
     start_iso = datetime.datetime.now().isoformat()
     logger.info(color(f"=== daily_crawl 시작 @ {start_iso} ===", C.BOLD))
@@ -171,9 +207,37 @@ def main():
         return
 
     success, failed = [], []
+    skipped = []
+    run_category, last_category_dt = _should_run_category()
+    if run_category:
+        logger.info(color("카테고리 스크립트 실행 예정 (주기 조건 충족)", C.DIM))
+    else:
+        last_desc = (
+            last_category_dt.isoformat()
+            if last_category_dt
+            else "알 수 없음"
+        )
+        logger.info(
+            color(
+                f"카테고리 스크립트 최근 실행 시각: {last_desc} "
+                f"(주 {CATEGORY_REFRESH_DAYS}회 정책으로 이번 주기 건너뜀)",
+                C.DIM,
+            )
+        )
+
     for cycle in range(1, CYCLE_LIMIT + 1):
         logger.info(color(f"=== 🔁 크롤 루프 {cycle}/{CYCLE_LIMIT} 시작 ===", C.BOLD))
         for stage_name, script_path in PIPELINE:
+            if stage_name == "category" and not run_category:
+                label = f"{stage_name}#{cycle}: {script_path.name}"
+                skipped.append(label)
+                logger.info(
+                    color(
+                        f"주기 조건에 따라 카테고리 스크립트를 건너뜁니다: {script_path}",
+                        C.DIM,
+                    )
+                )
+                continue
             ok = run_script(script_path, SCRIPT_TIMEOUT, MAX_RETRIES)
             label = f"{stage_name}#{cycle}: {script_path.name}"
             if ok:
@@ -198,6 +262,10 @@ def main():
     logger.info(color(f"실패: {len(failed)}", C.RED))
     for entry in failed:
         logger.info(color(f"  ✖ {entry}", C.RED))
+    if skipped:
+        logger.info(color(f"건너뜀: {len(skipped)}", C.YELLOW))
+        for entry in skipped:
+            logger.info(color(f"  ➖ {entry}", C.YELLOW))
     logger.info(color(f"로그 파일: {LOG_PATH}", C.BLUE))
     logger.info(color(f"=== daily_crawl 종료 @ {end_iso} ===", C.BOLD))
 
@@ -209,12 +277,17 @@ def main():
         f"- Success: {len(success)}",
         f"- Failed: {len(failed)}",
     ]
+    if skipped:
+        md.append(f"- Skipped: {len(skipped)}")
     if success:
         md.append("### Succeeded")
         md += [f"- {entry}" for entry in success]
     if failed:
         md.append("### Failed")
         md += [f"- {entry}" for entry in failed]
+    if skipped:
+        md.append("### Skipped")
+        md += [f"- {entry}" for entry in skipped]
     _write_github_summary("\n".join(md))
 
 if __name__ == "__main__":

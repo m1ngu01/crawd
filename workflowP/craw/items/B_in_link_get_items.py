@@ -39,6 +39,11 @@ BATCH_SIZE = int(os.environ.get("BATCH_SIZE", "10"))
 LIST_SELECTORS = [
     "div.main_prodlist.main_prodlist_list > ul > li"
 ]
+# 목록형 보기 버튼 (리스트형 전환)
+LIST_VIEW_BUTTON_SELECTOR = (
+    "#danawa_content > div.product_list_wrap > div > div.prod_list_tab > div > "
+    "div.view_opt > ul > li.type_item"
+)
 
 # ================== 로깅 ==================
 logging.basicConfig(
@@ -81,6 +86,38 @@ def parse_int(value: str):
         return int(digits)
     except ValueError:
         return None
+
+def ensure_list_view(driver):
+    """목록형(리스트) 보기로 전환"""
+    try:
+        list_button = WebDriverWait(driver, WAIT_TIMEOUT).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, LIST_VIEW_BUTTON_SELECTOR))
+        )
+    except Exception as exc:
+        log.warning("목록형 보기 탭을 찾지 못했습니다: %s", exc)
+        return False
+
+    try:
+        current_class = list_button.get_attribute("class") or ""
+        if "selected" in current_class.split():
+            return True
+
+        driver.execute_script("arguments[0].click();", list_button)
+
+        def _list_view_selected(d):
+            try:
+                refreshed = d.find_element(By.CSS_SELECTOR, LIST_VIEW_BUTTON_SELECTOR)
+                cls = refreshed.get_attribute("class") or ""
+                return "selected" in cls.split()
+            except Exception:
+                return False
+
+        WebDriverWait(driver, WAIT_TIMEOUT).until(_list_view_selected)
+        time.sleep(0.5)
+        return True
+    except Exception as exc:
+        log.warning("목록형 보기 전환 실패: %s", exc)
+        return False
 
 def find_product_items(driver):
     """상품 리스트 탐색 (로드 대기 포함)"""
@@ -147,6 +184,8 @@ def worker(args):
         try:
             driver.get(link)
             time.sleep(2)
+
+            ensure_list_view(driver)
 
             # 상품 리스트 탐색
             items, used_sel = find_product_items(driver)
