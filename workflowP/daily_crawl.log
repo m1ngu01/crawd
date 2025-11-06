@@ -1,239 +1,261 @@
-2025-11-06 08:15:09 [INFO] [1m=== daily_crawl 시작 @ 2025-11-06T08:15:09.205354 ===[0m
-2025-11-06 08:15:09 [INFO] [2m카테고리 스크립트 최근 실행 시각: 2025-11-06T08:14:29.453501 (주 7회 정책으로 이번 주기 건너뜀)[0m
-2025-11-06 08:15:09 [INFO] [1m=== 🔁 크롤 루프 1/2 시작 ===[0m
-2025-11-06 08:15:09 [INFO] [2m주기 조건에 따라 카테고리 스크립트를 건너뜁니다: /home/runner/work/crawd/crawd/workflowP/craw/category/craw_danawa_all_categories.py[0m
-2025-11-06 08:15:09 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py @ 2025-11-06T08:15:09.205753 ===[0m
-2025-11-06 08:15:09 [INFO] 총 6811개 (prefix=https://prod.danawa.com/list/?cate=, exclude=로켓배송관)
-2025-11-06 08:15:09 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py (성공) @ 2025-11-06T08:15:09.258862 ===[0m
-2025-11-06 08:15:09 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-06T08:15:09.258988 ===[0m
-2025-11-06 08:15:10 [INFO] 08:15:10 [INFO][MainProcess] 총 6811개 중 상위 6792개 링크 병렬 점검 시작 (이전 완료 6304개 스킵)
-2025-11-06 08:15:10 [INFO] 08:15:10 [INFO][MainProcess] 각 프로세스당 10개 링크 처리 예정
-2025-11-06 08:15:30 [INFO] 08:15:30 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17340339&15main_17_03): TimeoutException
-2025-11-06 08:15:38 [INFO] 08:15:38 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11239374&15main_11_02): TimeoutException
-2025-11-06 08:15:56 [INFO] 08:15:56 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17339848&15main_17_03): TimeoutException
-2025-11-06 08:16:10 [INFO] 08:16:10 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11330082&15main_11_03): TimeoutException
-2025-11-06 08:16:23 [INFO] 08:16:23 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17331086&15main_17_03): TimeoutException
-2025-11-06 08:16:39 [INFO] 08:16:39 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11340155&15main_11_03): TimeoutException
-2025-11-06 08:16:50 [INFO] 08:16:50 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734592&15main_17_03): TimeoutException
-2025-11-06 08:17:09 [INFO] 08:17:09 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=12335701&15main_12_03): TimeoutException
-2025-11-06 08:17:17 [INFO] 08:17:17 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734597&15main_17_03): TimeoutException
-2025-11-06 08:17:44 [INFO] 08:17:44 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734588&15main_17_03): TimeoutException
-2025-11-06 08:18:11 [INFO] 08:18:11 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17338040&15main_17_03): TimeoutException
-2025-11-06 08:18:37 [INFO] 08:18:37 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734589&15main_17_03): TimeoutException
-2025-11-06 08:19:04 [INFO] 08:19:04 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734590&15main_17_03): TimeoutException
-2025-11-06 08:19:08 [INFO] 08:19:08 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17325969&15main_17_03): TimeoutException
-2025-11-06 08:19:21 [INFO] [33m08:19:21 [INFO][MainProcess] 💾 체크포인트 저장 (6307개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 08:20:14 [INFO] 08:20:14 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=19337855&15main_19_03): TimeoutException
-2025-11-06 08:23:26 [INFO] 08:23:26 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [31   / 488] - 식품
-2025-11-06 08:23:41 [INFO] 08:23:41 [WARNING][ForkPoolWorker-3] ❌ 스틱형 홍삼 에러: timeout: Timed out receiving message from renderer: 13.159
-2025-11-06 08:23:41 [INFO]   (Session info: chrome=142.0.7444.59)
-2025-11-06 08:26:15 [INFO] 08:26:15 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [30   / 488] - 식품
-2025-11-06 08:27:41 [INFO] 08:27:41 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [33   / 488] - 헬스/건강식품
-2025-11-06 08:30:15 [INFO] 08:30:15 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [41   / 488] - 생활용품
-2025-11-06 08:31:40 [INFO] 08:31:40 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [34   / 488] - 출산/유아동
-2025-11-06 08:34:14 [INFO] 08:34:14 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [42   / 488] - 생활용품
-2025-11-06 08:35:38 [INFO] 08:35:38 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [35   / 488] - 출산/유아동
-2025-11-06 08:38:12 [INFO] 08:38:12 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [43   / 488] - 생활용품
-2025-11-06 08:39:36 [INFO] 08:39:36 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [36   / 488] - 출산/유아동
-2025-11-06 08:42:09 [INFO] 08:42:09 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [44   / 488] - 생활용품
-2025-11-06 08:43:34 [INFO] 08:43:34 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [37   / 488] - 출산/유아동
-2025-11-06 08:46:06 [INFO] 08:46:06 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [45   / 488] - 생활용품
-2025-11-06 08:47:31 [INFO] 08:47:31 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [38   / 488] - 생활용품
-2025-11-06 08:50:09 [INFO] 08:50:09 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [46   / 488] - 생활용품
-2025-11-06 08:51:30 [INFO] 08:51:30 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [39   / 488] - 생활용품
-2025-11-06 08:54:06 [INFO] 08:54:06 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [47   / 488] - 생활용품
-2025-11-06 08:55:27 [INFO] 08:55:27 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [40   / 488] - 생활용품
-2025-11-06 08:55:28 [INFO] [33m08:55:28 [INFO][MainProcess] 💾 체크포인트 저장 (6317개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 08:58:02 [INFO] 08:58:02 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [48   / 488] - 생활용품
-2025-11-06 08:59:27 [INFO] 08:59:27 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [51   / 488] - 생활용품
-2025-11-06 09:02:01 [INFO] 09:02:01 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [49   / 488] - 생활용품
-2025-11-06 09:03:25 [INFO] 09:03:25 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [52   / 488] - 생활용품
-2025-11-06 09:05:59 [INFO] 09:05:59 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [50   / 488] - 생활용품
-2025-11-06 09:06:00 [INFO] [33m09:06:00 [INFO][MainProcess] 💾 체크포인트 저장 (6327개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 09:07:23 [INFO] 09:07:23 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [53   / 488] - 생활용품
-2025-11-06 09:09:59 [INFO] 09:09:59 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [61   / 488] - 생활용품
-2025-11-06 09:11:21 [INFO] 09:11:21 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [54   / 488] - 생활용품
-2025-11-06 09:13:59 [INFO] 09:13:59 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [62   / 488] - 생활용품
-2025-11-06 09:15:18 [INFO] 09:15:18 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [55   / 488] - 생활용품
-2025-11-06 09:17:58 [INFO] 09:17:58 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [63   / 488] - 생활용품
-2025-11-06 09:19:17 [INFO] 09:19:17 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [56   / 488] - 생활용품
-2025-11-06 09:22:00 [INFO] 09:22:00 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [64   / 488] - 생활용품
-2025-11-06 09:23:14 [INFO] 09:23:14 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [57   / 488] - 생활용품
-2025-11-06 09:26:02 [INFO] 09:26:02 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [65   / 488] - 생활용품
-2025-11-06 09:27:12 [INFO] 09:27:12 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [58   / 488] - 생활용품
-2025-11-06 09:30:02 [INFO] 09:30:02 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [66   / 488] - 생활용품
-2025-11-06 09:31:10 [INFO] 09:31:10 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [59   / 488] - 생활용품
-2025-11-06 09:34:10 [INFO] 09:34:10 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [67   / 488] - 생활용품
-2025-11-06 09:35:08 [INFO] 09:35:08 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [60   / 488] - 생활용품
-2025-11-06 09:35:09 [INFO] [33m09:35:09 [INFO][MainProcess] 💾 체크포인트 저장 (6337개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 09:38:08 [INFO] 09:38:08 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [68   / 488] - 생활용품
-2025-11-06 09:39:09 [INFO] 09:39:09 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [71   / 488] - 생활용품
-2025-11-06 09:42:06 [INFO] 09:42:06 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [69   / 488] - 생활용품
-2025-11-06 09:43:07 [INFO] 09:43:07 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [72   / 488] - 생활용품
-2025-11-06 09:46:05 [INFO] 09:46:05 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [70   / 488] - 생활용품
-2025-11-06 09:46:06 [INFO] [33m09:46:06 [INFO][MainProcess] 💾 체크포인트 저장 (6347개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 09:47:05 [INFO] 09:47:05 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [73   / 488] - 주방용품
-2025-11-06 09:50:06 [INFO] 09:50:06 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [81   / 488] - 주방용품
-2025-11-06 09:51:05 [INFO] 09:51:05 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [74   / 488] - 주방용품
-2025-11-06 09:54:08 [INFO] 09:54:08 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [82   / 488] - 주방용품
-2025-11-06 09:55:03 [INFO] 09:55:03 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [75   / 488] - 주방용품
-2025-11-06 09:58:07 [INFO] 09:58:07 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [83   / 488] - 주방용품
-2025-11-06 09:59:01 [INFO] 09:59:01 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [76   / 488] - 주방용품
-2025-11-06 10:02:05 [INFO] 10:02:05 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [84   / 488] - 주방용품
-2025-11-06 10:02:59 [INFO] 10:02:59 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [77   / 488] - 주방용품
-2025-11-06 10:06:06 [INFO] 10:06:06 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [85   / 488] - 주방용품
-2025-11-06 10:06:58 [INFO] 10:06:58 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [78   / 488] - 주방용품
-2025-11-06 10:10:04 [INFO] 10:10:04 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [86   / 488] - 주방용품
-2025-11-06 10:10:19 [INFO] 10:10:19 [WARNING][ForkPoolWorker-2] ❌ 홈세트/반상기 에러: timeout: Timed out receiving message from renderer: 12.395
-2025-11-06 10:10:19 [INFO]   (Session info: chrome=142.0.7444.59)
-2025-11-06 10:10:57 [INFO] 10:10:57 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [79   / 488] - 주방용품
-2025-11-06 10:14:18 [INFO] 10:14:18 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [88   / 488] - 주방용품
-2025-11-06 10:14:56 [INFO] 10:14:56 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [80   / 488] - 주방용품
-2025-11-06 10:14:57 [INFO] [33m10:14:57 [INFO][MainProcess] 💾 체크포인트 저장 (6357개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 10:18:17 [INFO] 10:18:17 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [89   / 488] - 주방용품
-2025-11-06 10:18:55 [INFO] 10:18:55 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [91   / 488] - 주방용품
-2025-11-06 10:22:16 [INFO] 10:22:16 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [90   / 488] - 주방용품
-2025-11-06 10:22:54 [INFO] 10:22:54 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [92   / 488] - 주방용품
-2025-11-06 10:26:15 [INFO] 10:26:15 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [101  / 488] - 주방용품
-2025-11-06 10:26:52 [INFO] 10:26:52 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [93   / 488] - 주방용품
-2025-11-06 10:30:13 [INFO] 10:30:13 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [102  / 488] - 주방용품
-2025-11-06 10:30:50 [INFO] 10:30:50 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [94   / 488] - 주방용품
-2025-11-06 10:34:11 [INFO] 10:34:11 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [103  / 488] - 주방용품
-2025-11-06 10:34:47 [INFO] 10:34:47 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [95   / 488] - 주방용품
-2025-11-06 10:37:36 [INFO] 10:37:36 [INFO][ForkPoolWorker-2] ✅ 24개 완료 | 진행도 [104  / 488] - 주방용품
-2025-11-06 10:38:44 [INFO] 10:38:44 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [96   / 488] - 주방용품
-2025-11-06 10:41:34 [INFO] 10:41:34 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [105  / 488] - 주방용품
-2025-11-06 10:42:42 [INFO] 10:42:42 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [97   / 488] - 주방용품
-2025-11-06 10:45:35 [INFO] 10:45:35 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [106  / 488] - 주방용품
-2025-11-06 10:46:40 [INFO] 10:46:40 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [98   / 488] - 주방용품
-2025-11-06 10:49:31 [INFO] 10:49:31 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [107  / 488] - 주방용품
-2025-11-06 10:50:38 [INFO] 10:50:38 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [99   / 488] - 주방용품
-2025-11-06 10:53:30 [INFO] 10:53:30 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [108  / 488] - 주방용품
-2025-11-06 10:54:37 [INFO] 10:54:37 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [100  / 488] - 주방용품
-2025-11-06 10:54:38 [INFO] [33m10:54:38 [INFO][MainProcess] 💾 체크포인트 저장 (6376개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 10:57:34 [INFO] 10:57:34 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [109  / 488] - 주방용품
-2025-11-06 10:58:39 [INFO] 10:58:39 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [111  / 488] - 주방용품
-2025-11-06 11:01:32 [INFO] 11:01:32 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [110  / 488] - 주방용품
-2025-11-06 11:01:33 [INFO] [33m11:01:33 [INFO][MainProcess] 💾 체크포인트 저장 (6386개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 11:02:37 [INFO] 11:02:37 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [112  / 488] - 주방용품
-2025-11-06 11:05:34 [INFO] 11:05:34 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [121  / 488] - 주방용품
-2025-11-06 11:06:36 [INFO] 11:06:36 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [113  / 488] - 주방용품
-2025-11-06 11:09:33 [INFO] 11:09:33 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [122  / 488] - 주방용품
-2025-11-06 11:10:35 [INFO] 11:10:35 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [114  / 488] - 주방용품
-2025-11-06 11:13:31 [INFO] 11:13:31 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [123  / 488] - 주방용품
-2025-11-06 11:14:32 [INFO] 11:14:32 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [115  / 488] - 주방용품
-2025-11-06 11:17:29 [INFO] 11:17:29 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [124  / 488] - 주방용품
-2025-11-06 11:18:31 [INFO] 11:18:31 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [116  / 488] - 주방용품
-2025-11-06 11:21:30 [INFO] 11:21:30 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [125  / 488] - 주방용품
-2025-11-06 11:22:29 [INFO] 11:22:29 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [117  / 488] - 주방용품
-2025-11-06 11:25:27 [INFO] 11:25:27 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [126  / 488] - 주방용품
-2025-11-06 11:26:27 [INFO] 11:26:27 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [118  / 488] - 주방용품
-2025-11-06 11:29:29 [INFO] 11:29:29 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [127  / 488] - 주방용품
-2025-11-06 11:30:25 [INFO] 11:30:25 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [119  / 488] - 주방용품
-2025-11-06 11:33:28 [INFO] 11:33:28 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [128  / 488] - 주방용품
-2025-11-06 11:34:24 [INFO] 11:34:24 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [120  / 488] - 주방용품
-2025-11-06 11:34:25 [INFO] [33m11:34:25 [INFO][MainProcess] 💾 체크포인트 저장 (6396개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 11:37:26 [INFO] 11:37:26 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [129  / 488] - 주방용품
-2025-11-06 11:38:25 [INFO] 11:38:25 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [131  / 488] - 주방용품
-2025-11-06 11:41:25 [INFO] 11:41:25 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [130  / 488] - 주방용품
-2025-11-06 11:41:26 [INFO] [33m11:41:26 [INFO][MainProcess] 💾 체크포인트 저장 (6406개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 11:42:25 [INFO] 11:42:25 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [132  / 488] - 주방용품
-2025-11-06 11:45:24 [INFO] 11:45:24 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [141  / 488] - 주방용품
-2025-11-06 11:46:25 [INFO] 11:46:25 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [133  / 488] - 주방용품
-2025-11-06 11:49:25 [INFO] 11:49:25 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [142  / 488] - 주방용품
-2025-11-06 11:50:24 [INFO] 11:50:24 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [134  / 488] - 주방용품
-2025-11-06 11:53:25 [INFO] 11:53:25 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [143  / 488] - 주방용품
-2025-11-06 11:54:23 [INFO] 11:54:23 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [135  / 488] - 주방용품
-2025-11-06 11:57:23 [INFO] 11:57:23 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [144  / 488] - 주방용품
-2025-11-06 11:58:22 [INFO] 11:58:22 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [136  / 488] - 주방용품
-2025-11-06 12:01:24 [INFO] 12:01:24 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [145  / 488] - 주방용품
-2025-11-06 12:02:22 [INFO] 12:02:22 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [137  / 488] - 주방용품
-2025-11-06 12:05:23 [INFO] 12:05:23 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [146  / 488] - 주방용품
-2025-11-06 12:06:20 [INFO] 12:06:20 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [138  / 488] - 주방용품
-2025-11-06 12:09:26 [INFO] 12:09:26 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [147  / 488] - 주방용품
-2025-11-06 12:10:19 [INFO] 12:10:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [139  / 488] - 주방용품
-2025-11-06 12:13:25 [INFO] 12:13:25 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [148  / 488] - 뷰티
-2025-11-06 12:14:16 [INFO] 12:14:16 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [140  / 488] - 주방용품
-2025-11-06 12:14:17 [INFO] [33m12:14:17 [INFO][MainProcess] 💾 체크포인트 저장 (6416개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 12:17:27 [INFO] 12:17:27 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [149  / 488] - 뷰티
-2025-11-06 12:18:17 [INFO] 12:18:17 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [151  / 488] - 뷰티
-2025-11-06 12:21:25 [INFO] 12:21:25 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [150  / 488] - 뷰티
-2025-11-06 12:21:26 [INFO] [33m12:21:26 [INFO][MainProcess] 💾 체크포인트 저장 (6426개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 12:21:41 [INFO] 12:21:41 [WARNING][ForkPoolWorker-2] ❌ 마스카라/섀도우 에러: timeout: Timed out receiving message from renderer: 12.864
-2025-11-06 12:21:41 [INFO]   (Session info: chrome=142.0.7444.59)
-2025-11-06 12:22:15 [INFO] 12:22:15 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [152  / 488] - 뷰티
-2025-11-06 12:25:39 [INFO] 12:25:39 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [162  / 488] - 뷰티
-2025-11-06 12:26:14 [INFO] 12:26:14 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [153  / 488] - 뷰티
-2025-11-06 12:29:37 [INFO] 12:29:37 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [163  / 488] - 뷰티
-2025-11-06 12:29:52 [INFO] 12:29:52 [WARNING][ForkPoolWorker-2] ❌ 헤어소품 에러: timeout: Timed out receiving message from renderer: 13.000
-2025-11-06 12:29:52 [INFO]   (Session info: chrome=142.0.7444.59)
-2025-11-06 12:30:11 [INFO] 12:30:11 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [154  / 488] - 뷰티
-2025-11-06 12:33:50 [INFO] 12:33:50 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [165  / 488] - 뷰티
-2025-11-06 12:34:12 [INFO] 12:34:12 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [155  / 488] - 뷰티
-2025-11-06 12:37:51 [INFO] 12:37:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [166  / 488] - 뷰티
-2025-11-06 12:38:11 [INFO] 12:38:11 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [156  / 488] - 뷰티
-2025-11-06 12:41:49 [INFO] 12:41:49 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [167  / 488] - 뷰티
-2025-11-06 12:42:11 [INFO] 12:42:11 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [157  / 488] - 뷰티
-2025-11-06 12:45:46 [INFO] 12:45:46 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [168  / 488] - 뷰티
-2025-11-06 12:46:13 [INFO] 12:46:13 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [158  / 488] - 뷰티
-2025-11-06 12:49:43 [INFO] 12:49:43 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [169  / 488] - 뷰티
-2025-11-06 12:50:11 [INFO] 12:50:11 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [159  / 488] - 뷰티
-2025-11-06 12:53:40 [INFO] 12:53:40 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [170  / 488] - 뷰티
-2025-11-06 12:54:09 [INFO] 12:54:09 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [160  / 488] - 뷰티
-2025-11-06 12:54:10 [INFO] [33m12:54:10 [INFO][MainProcess] 💾 체크포인트 저장 (6444개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 12:57:41 [INFO] 12:57:41 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [171  / 488] - 뷰티
-2025-11-06 12:58:10 [INFO] 12:58:10 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [181  / 488] - 남성의류
-2025-11-06 13:01:41 [INFO] 13:01:41 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [172  / 488] - 뷰티
-2025-11-06 13:02:09 [INFO] 13:02:09 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [182  / 488] - 남성의류
-2025-11-06 13:05:43 [INFO] 13:05:43 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [173  / 488] - 뷰티
-2025-11-06 13:06:06 [INFO] 13:06:06 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [183  / 488] - 남성의류
-2025-11-06 13:09:50 [INFO] 13:09:50 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [174  / 488] - 뷰티
-2025-11-06 13:10:11 [INFO] 13:10:11 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [184  / 488] - 남성의류
-2025-11-06 13:13:51 [INFO] 13:13:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [175  / 488] - 뷰티
-2025-11-06 13:14:12 [INFO] 13:14:12 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [185  / 488] - 남성의류
-2025-11-06 13:17:53 [INFO] 13:17:53 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [176  / 488] - 뷰티
-2025-11-06 13:18:11 [INFO] 13:18:11 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [186  / 488] - 남성의류
-2025-11-06 13:21:51 [INFO] 13:21:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [177  / 488] - 남성의류
-2025-11-06 13:22:11 [INFO] 13:22:11 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [187  / 488] - 남성의류
-2025-11-06 13:25:50 [INFO] 13:25:50 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [178  / 488] - 남성의류
-2025-11-06 13:26:20 [INFO] 13:26:20 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [188  / 488] - 남성의류
-2025-11-06 13:29:50 [INFO] 13:29:50 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [179  / 488] - 남성의류
-2025-11-06 13:30:21 [INFO] 13:30:21 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [189  / 488] - 남성의류
-2025-11-06 13:33:50 [INFO] 13:33:50 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [180  / 488] - 남성의류
-2025-11-06 13:33:51 [INFO] [33m13:33:51 [INFO][MainProcess] 💾 체크포인트 저장 (6454개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 13:34:19 [INFO] 13:34:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [190  / 488] - 남성의류
-2025-11-06 13:34:20 [INFO] [33m13:34:20 [INFO][MainProcess] 💾 체크포인트 저장 (6464개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-06 13:37:56 [INFO] 13:37:56 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [191  / 488] - 남성의류
-2025-11-06 13:38:20 [INFO] 13:38:20 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [201  / 488] - 남성의류
-2025-11-06 13:41:56 [INFO] 13:41:56 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [192  / 488] - 남성의류
-2025-11-06 13:42:20 [INFO] 13:42:20 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [202  / 488] - 남성의류
-2025-11-06 13:45:56 [INFO] 13:45:56 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [193  / 488] - 남성의류
-2025-11-06 13:46:19 [INFO] 13:46:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [203  / 488] - 남성의류
-2025-11-06 13:49:57 [INFO] 13:49:57 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [194  / 488] - 남성의류
-2025-11-06 13:50:18 [INFO] 13:50:18 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [204  / 488] - 남성의류
-2025-11-06 13:53:54 [INFO] 13:53:54 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [195  / 488] - 남성의류
-2025-11-06 13:54:19 [INFO] 13:54:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [205  / 488] - 남성의류
-2025-11-06 13:57:54 [INFO] 13:57:54 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [196  / 488] - 남성의류
-2025-11-06 13:58:19 [INFO] 13:58:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [206  / 488] - 남성의류
-2025-11-06 14:01:54 [INFO] 14:01:54 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [197  / 488] - 남성의류
-2025-11-06 14:02:19 [INFO] 14:02:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [207  / 488] - 여성의류
-2025-11-06 14:05:51 [INFO] 14:05:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [198  / 488] - 남성의류
-2025-11-06 14:05:51 [ERROR] [31m스크립트 실행 실패[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py - 스크립트 타임아웃 초과(21000s): /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-06T14:05:51.551857[0m
-2025-11-06 14:05:53 [INFO] [34m=== 스크립트 실행 시작[2/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-06T14:05:53.552158 ===[0m
-2025-11-06 14:05:54 [INFO] 14:05:54 [INFO][MainProcess] 총 6811개 중 상위 6792개 링크 병렬 점검 시작 (이전 완료 6461개 스킵)
-2025-11-06 14:05:54 [INFO] 14:05:54 [INFO][MainProcess] 각 프로세스당 10개 링크 처리 예정
-2025-11-06 14:06:12 [INFO] 14:06:12 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17340339&15main_17_03): TimeoutException
-2025-11-06 14:06:18 [INFO] 14:06:18 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11239374&15main_11_02): TimeoutException
-2025-11-06 14:06:39 [INFO] 14:06:39 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17339848&15main_17_03): TimeoutException
-2025-11-06 14:06:50 [INFO] 14:06:50 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11330082&15main_11_03): TimeoutException
-2025-11-06 14:07:06 [INFO] 14:07:06 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17331086&15main_17_03): TimeoutException
-2025-11-06 14:07:19 [INFO] 14:07:19 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11340155&15main_11_03): TimeoutException
-2025-11-06 14:07:33 [INFO] 14:07:33 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734592&15main_17_03): TimeoutException
-2025-11-06 14:07:50 [INFO] 14:07:50 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=12335701&15main_12_03): TimeoutException
-2025-11-06 14:08:00 [INFO] 14:08:00 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734597&15main_17_03): TimeoutException
-2025-11-06 14:08:26 [INFO] 14:08:26 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734588&15main_17_03): TimeoutException
-2025-11-06 14:08:53 [INFO] 14:08:53 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17338040&15main_17_03): TimeoutException
-2025-11-06 14:09:20 [INFO] 14:09:20 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734589&15main_17_03): TimeoutException
-2025-11-06 14:09:43 [INFO] 14:09:43 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17325969&15main_17_03): TimeoutException
-2025-11-06 14:09:46 [INFO] 14:09:46 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734590&15main_17_03): TimeoutException
-2025-11-06 14:09:56 [INFO] [33m14:09:56 [INFO][MainProcess] 💾 체크포인트 저장 (6464개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 16:13:47 [INFO] [1m=== daily_crawl 시작 @ 2025-11-06T16:13:47.541824 ===[0m
+2025-11-06 16:13:47 [INFO] [2m카테고리 스크립트 최근 실행 시각: 2025-11-06T16:13:21.178483 (주 7회 정책으로 이번 주기 건너뜀)[0m
+2025-11-06 16:13:47 [INFO] [1m=== 🔁 크롤 루프 1/2 시작 ===[0m
+2025-11-06 16:13:47 [INFO] [2m주기 조건에 따라 카테고리 스크립트를 건너뜁니다: /home/runner/work/crawd/crawd/workflowP/craw/category/craw_danawa_all_categories.py[0m
+2025-11-06 16:13:47 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py @ 2025-11-06T16:13:47.542221 ===[0m
+2025-11-06 16:13:47 [INFO] 총 6811개 (prefix=https://prod.danawa.com/list/?cate=, exclude=로켓배송관)
+2025-11-06 16:13:47 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py (성공) @ 2025-11-06T16:13:47.642207 ===[0m
+2025-11-06 16:13:47 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-06T16:13:47.642336 ===[0m
+2025-11-06 16:13:48 [INFO] 16:13:48 [INFO][MainProcess] 총 6811개 중 상위 6792개 링크 병렬 점검 시작 (이전 완료 6461개 스킵)
+2025-11-06 16:13:48 [INFO] 16:13:48 [INFO][MainProcess] 각 프로세스당 10개 링크 처리 예정
+2025-11-06 16:14:10 [INFO] 16:14:10 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17340339&15main_17_03): TimeoutException
+2025-11-06 16:14:16 [INFO] 16:14:16 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11239374&15main_11_02): TimeoutException
+2025-11-06 16:14:39 [INFO] 16:14:39 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17339848&15main_17_03): TimeoutException
+2025-11-06 16:14:52 [INFO] 16:14:52 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11330082&15main_11_03): TimeoutException
+2025-11-06 16:15:07 [INFO] 16:15:07 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17331086&15main_17_03): TimeoutException
+2025-11-06 16:15:21 [INFO] 16:15:21 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11340155&15main_11_03): TimeoutException
+2025-11-06 16:15:35 [INFO] 16:15:35 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734592&15main_17_03): TimeoutException
+2025-11-06 16:15:54 [INFO] 16:15:54 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=12335701&15main_12_03): TimeoutException
+2025-11-06 16:16:01 [INFO] 16:16:01 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734597&15main_17_03): TimeoutException
+2025-11-06 16:16:28 [INFO] 16:16:28 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734588&15main_17_03): TimeoutException
+2025-11-06 16:16:55 [INFO] 16:16:55 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17338040&15main_17_03): TimeoutException
+2025-11-06 16:17:22 [INFO] 16:17:22 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734589&15main_17_03): TimeoutException
+2025-11-06 16:17:49 [INFO] 16:17:49 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734590&15main_17_03): TimeoutException
+2025-11-06 16:17:57 [INFO] 16:17:57 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17325969&15main_17_03): TimeoutException
+2025-11-06 16:18:10 [INFO] [33m16:18:10 [INFO][MainProcess] 💾 체크포인트 저장 (6464개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 16:18:27 [INFO] 16:18:27 [WARNING][ForkPoolWorker-3] ❌ 홈세트/반상기 에러: timeout: Timed out receiving message from renderer: 12.586
+2025-11-06 16:18:27 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 16:18:42 [INFO] 16:18:42 [WARNING][ForkPoolWorker-3] ❌ 마스카라/섀도우 에러: timeout: Timed out receiving message from renderer: 13.658
+2025-11-06 16:18:42 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 16:18:57 [INFO] 16:18:57 [WARNING][ForkPoolWorker-3] ❌ 헤어소품 에러: timeout: Timed out receiving message from renderer: 14.097
+2025-11-06 16:18:57 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 16:19:07 [INFO] 16:19:07 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=19337855&15main_19_03): TimeoutException
+2025-11-06 16:21:30 [INFO] 16:21:30 [WARNING][ForkPoolWorker-2] ❌ 스틱형 홍삼 에러: timeout: Timed out receiving message from renderer: 13.288
+2025-11-06 16:21:30 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 16:22:56 [INFO] 16:22:56 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [34   / 331] - 남성의류
+2025-11-06 16:25:31 [INFO] 16:25:31 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [41   / 331] - 남성의류
+2025-11-06 16:27:03 [INFO] 16:27:03 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [35   / 331] - 남성의류
+2025-11-06 16:29:37 [INFO] 16:29:37 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [42   / 331] - 남성의류
+2025-11-06 16:31:03 [INFO] 16:31:03 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [36   / 331] - 남성의류
+2025-11-06 16:33:36 [INFO] 16:33:36 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [43   / 331] - 남성의류
+2025-11-06 16:35:03 [INFO] 16:35:03 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [37   / 331] - 남성의류
+2025-11-06 16:37:37 [INFO] 16:37:37 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [44   / 331] - 남성의류
+2025-11-06 16:39:04 [INFO] 16:39:04 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [38   / 331] - 남성의류
+2025-11-06 16:41:38 [INFO] 16:41:38 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [45   / 331] - 남성의류
+2025-11-06 16:43:04 [INFO] 16:43:04 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [39   / 331] - 남성의류
+2025-11-06 16:45:39 [INFO] 16:45:39 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [46   / 331] - 남성의류
+2025-11-06 16:47:04 [INFO] 16:47:04 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [40   / 331] - 남성의류
+2025-11-06 16:49:42 [INFO] 16:49:42 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [47   / 331] - 남성의류
+2025-11-06 16:51:07 [INFO] 16:51:07 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [51   / 331] - 여성의류
+2025-11-06 16:51:22 [INFO] 16:51:22 [WARNING][ForkPoolWorker-3] ❌ 항공점퍼/블루종 에러: timeout: Timed out receiving message from renderer: 11.424
+2025-11-06 16:51:22 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 16:53:47 [INFO] 16:53:47 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [48   / 331] - 남성의류
+2025-11-06 16:55:25 [INFO] 16:55:25 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [53   / 331] - 여성의류
+2025-11-06 16:57:48 [INFO] 16:57:48 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [49   / 331] - 남성의류
+2025-11-06 16:59:28 [INFO] 16:59:28 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [54   / 331] - 여성의류
+2025-11-06 17:01:48 [INFO] 17:01:48 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [50   / 331] - 여성의류
+2025-11-06 17:01:49 [INFO] [33m17:01:49 [INFO][MainProcess] 💾 체크포인트 저장 (6481개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 17:03:30 [INFO] 17:03:30 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [55   / 331] - 여성의류
+2025-11-06 17:05:54 [INFO] 17:05:54 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [61   / 331] - 여성의류
+2025-11-06 17:07:33 [INFO] 17:07:33 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [56   / 331] - 여성의류
+2025-11-06 17:09:58 [INFO] 17:09:58 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [62   / 331] - 여성의류
+2025-11-06 17:11:39 [INFO] 17:11:39 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [57   / 331] - 여성의류
+2025-11-06 17:14:06 [INFO] 17:14:06 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [63   / 331] - 여성의류
+2025-11-06 17:15:41 [INFO] 17:15:41 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [58   / 331] - 여성의류
+2025-11-06 17:18:07 [INFO] 17:18:07 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [64   / 331] - 여성의류
+2025-11-06 17:19:47 [INFO] 17:19:47 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [59   / 331] - 여성의류
+2025-11-06 17:22:10 [INFO] 17:22:10 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [65   / 331] - 여성의류
+2025-11-06 17:22:25 [INFO] 17:22:25 [WARNING][ForkPoolWorker-2] ❌ 원피스 에러: timeout: Timed out receiving message from renderer: 11.605
+2025-11-06 17:22:25 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 17:23:49 [INFO] 17:23:49 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [60   / 331] - 여성의류
+2025-11-06 17:26:26 [INFO] 17:26:26 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [67   / 331] - 여성의류
+2025-11-06 17:27:55 [INFO] 17:27:55 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [71   / 331] - 여성의류
+2025-11-06 17:30:25 [INFO] 17:30:25 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [68   / 331] - 여성의류
+2025-11-06 17:31:59 [INFO] 17:31:59 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [72   / 331] - 여성의류
+2025-11-06 17:34:29 [INFO] 17:34:29 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [69   / 331] - 여성의류
+2025-11-06 17:35:59 [INFO] 17:35:59 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [73   / 331] - 여성의류
+2025-11-06 17:38:31 [INFO] 17:38:31 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [70   / 331] - 여성의류
+2025-11-06 17:38:32 [INFO] [33m17:38:32 [INFO][MainProcess] 💾 체크포인트 저장 (6499개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 17:40:02 [INFO] 17:40:02 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [74   / 331] - 여성의류
+2025-11-06 17:42:34 [INFO] 17:42:34 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [81   / 331] - 여성의류
+2025-11-06 17:44:04 [INFO] 17:44:04 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [75   / 331] - 여성의류
+2025-11-06 17:46:35 [INFO] 17:46:35 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [82   / 331] - 여성의류
+2025-11-06 17:48:05 [INFO] 17:48:05 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [76   / 331] - 여성의류
+2025-11-06 17:50:38 [INFO] 17:50:38 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [83   / 331] - 패션잡화
+2025-11-06 17:52:07 [INFO] 17:52:07 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [77   / 331] - 여성의류
+2025-11-06 17:54:39 [INFO] 17:54:39 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [84   / 331] - 패션잡화
+2025-11-06 17:56:07 [INFO] 17:56:07 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [78   / 331] - 여성의류
+2025-11-06 17:58:47 [INFO] 17:58:47 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [85   / 331] - 패션잡화
+2025-11-06 18:00:07 [INFO] 18:00:07 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [79   / 331] - 여성의류
+2025-11-06 18:02:47 [INFO] 18:02:47 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [86   / 331] - 패션잡화
+2025-11-06 18:04:07 [INFO] 18:04:07 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [80   / 331] - 여성의류
+2025-11-06 18:04:08 [INFO] [33m18:04:08 [INFO][MainProcess] 💾 체크포인트 저장 (6509개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 18:06:47 [INFO] 18:06:47 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [87   / 331] - 패션잡화
+2025-11-06 18:08:10 [INFO] 18:08:10 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [91   / 331] - 패션잡화
+2025-11-06 18:10:49 [INFO] 18:10:49 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [88   / 331] - 패션잡화
+2025-11-06 18:12:10 [INFO] 18:12:10 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [92   / 331] - 패션잡화
+2025-11-06 18:14:49 [INFO] 18:14:49 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [89   / 331] - 패션잡화
+2025-11-06 18:16:14 [INFO] 18:16:14 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [93   / 331] - 패션잡화
+2025-11-06 18:18:51 [INFO] 18:18:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [90   / 331] - 패션잡화
+2025-11-06 18:18:52 [INFO] [33m18:18:52 [INFO][MainProcess] 💾 체크포인트 저장 (6519개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 18:20:15 [INFO] 18:20:15 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [94   / 331] - 패션잡화
+2025-11-06 18:22:58 [INFO] 18:22:58 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [101  / 331] - 패션잡화
+2025-11-06 18:24:18 [INFO] 18:24:18 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [95   / 331] - 패션잡화
+2025-11-06 18:26:58 [INFO] 18:26:58 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [102  / 331] - 패션잡화
+2025-11-06 18:28:19 [INFO] 18:28:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [96   / 331] - 패션잡화
+2025-11-06 18:30:56 [INFO] 18:30:56 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [103  / 331] - 패션잡화
+2025-11-06 18:32:19 [INFO] 18:32:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [97   / 331] - 패션잡화
+2025-11-06 18:34:59 [INFO] 18:34:59 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [104  / 331] - 패션잡화
+2025-11-06 18:35:14 [INFO] 18:35:14 [WARNING][ForkPoolWorker-2] ❌ 반지갑 에러: timeout: Timed out receiving message from renderer: 13.794
+2025-11-06 18:35:14 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 18:36:19 [INFO] 18:36:19 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [98   / 331] - 패션잡화
+2025-11-06 18:39:18 [INFO] 18:39:18 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [106  / 331] - 패션잡화
+2025-11-06 18:40:20 [INFO] 18:40:20 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [99   / 331] - 패션잡화
+2025-11-06 18:43:19 [INFO] 18:43:19 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [107  / 331] - 패션잡화
+2025-11-06 18:44:20 [INFO] 18:44:20 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [100  / 331] - 패션잡화
+2025-11-06 18:44:21 [INFO] [33m18:44:21 [INFO][MainProcess] 💾 체크포인트 저장 (6529개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 18:47:23 [INFO] 18:47:23 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [108  / 331] - 패션잡화
+2025-11-06 18:48:24 [INFO] 18:48:24 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [111  / 331] - 패션잡화
+2025-11-06 18:51:25 [INFO] 18:51:25 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [109  / 331] - 패션잡화
+2025-11-06 18:52:26 [INFO] 18:52:26 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [112  / 331] - 패션잡화
+2025-11-06 18:55:27 [INFO] 18:55:27 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [110  / 331] - 패션잡화
+2025-11-06 18:56:26 [INFO] 18:56:26 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [113  / 331] - 패션잡화
+2025-11-06 18:59:29 [INFO] 18:59:29 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [121  / 331] - 패션잡화
+2025-11-06 19:00:27 [INFO] 19:00:27 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [114  / 331] - 패션잡화
+2025-11-06 19:03:30 [INFO] 19:03:30 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [122  / 331] - 패션잡화
+2025-11-06 19:04:28 [INFO] 19:04:28 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [115  / 331] - 패션잡화
+2025-11-06 19:07:29 [INFO] 19:07:29 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [123  / 331] - 패션잡화
+2025-11-06 19:08:29 [INFO] 19:08:29 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [116  / 331] - 패션잡화
+2025-11-06 19:11:33 [INFO] 19:11:33 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [124  / 331] - 패션잡화
+2025-11-06 19:12:33 [INFO] 19:12:33 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [117  / 331] - 패션잡화
+2025-11-06 19:12:48 [INFO] 19:12:48 [WARNING][ForkPoolWorker-3] ❌ 장갑 에러: timeout: Timed out receiving message from renderer: 12.246
+2025-11-06 19:12:48 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 19:15:34 [INFO] 19:15:34 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [125  / 331] - 반려동물/취미/악기
+2025-11-06 19:16:48 [INFO] 19:16:48 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [119  / 331] - 패션잡화
+2025-11-06 19:19:34 [INFO] 19:19:34 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [126  / 331] - 반려동물/취미/악기
+2025-11-06 19:20:49 [INFO] 19:20:49 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [120  / 331] - 패션잡화
+2025-11-06 19:20:50 [INFO] [33m19:20:50 [INFO][MainProcess] 💾 체크포인트 저장 (6547개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 19:21:05 [INFO] 19:21:05 [WARNING][ForkPoolWorker-3] ❌ 고양이 사료 에러: timeout: Timed out receiving message from renderer: 13.641
+2025-11-06 19:21:05 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 19:23:34 [INFO] 19:23:34 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [127  / 331] - 반려동물/취미/악기
+2025-11-06 19:25:06 [INFO] 19:25:06 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [132  / 331] - 반려동물/취미/악기
+2025-11-06 19:27:38 [INFO] 19:27:38 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [128  / 331] - 반려동물/취미/악기
+2025-11-06 19:29:08 [INFO] 19:29:08 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [133  / 331] - 반려동물/취미/악기
+2025-11-06 19:31:40 [INFO] 19:31:40 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [129  / 331] - 반려동물/취미/악기
+2025-11-06 19:33:07 [INFO] 19:33:07 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [134  / 331] - 반려동물/취미/악기
+2025-11-06 19:35:45 [INFO] 19:35:45 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [130  / 331] - 반려동물/취미/악기
+2025-11-06 19:35:46 [INFO] [33m19:35:46 [INFO][MainProcess] 💾 체크포인트 저장 (6557개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 19:36:47 [INFO] 19:36:47 [INFO][ForkPoolWorker-2] ✅ 6개 완료 | 진행도 [141  / 331] - 반려동물/취미/악기
+2025-11-06 19:37:09 [INFO] 19:37:09 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [135  / 331] - 반려동물/취미/악기
+2025-11-06 19:37:24 [INFO] 19:37:24 [WARNING][ForkPoolWorker-3] ❌ 줄/이동장/훈련 에러: timeout: Timed out receiving message from renderer: 13.435
+2025-11-06 19:37:24 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 19:40:51 [INFO] 19:40:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [142  / 331] - 반려동물/취미/악기
+2025-11-06 19:41:23 [INFO] 19:41:23 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [137  / 331] - 반려동물/취미/악기
+2025-11-06 19:44:50 [INFO] 19:44:50 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [143  / 331] - 반려동물/취미/악기
+2025-11-06 19:45:23 [INFO] 19:45:23 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [138  / 331] - 반려동물/취미/악기
+2025-11-06 19:46:29 [INFO] 19:46:29 [INFO][ForkPoolWorker-3] ✅ 7개 완료 | 진행도 [139  / 331] - 반려동물/취미/악기
+2025-11-06 19:47:21 [INFO] 19:47:21 [INFO][ForkPoolWorker-2] ✅ 17개 완료 | 진행도 [144  / 331] - 반려동물/취미/악기
+2025-11-06 19:49:20 [INFO] 19:49:20 [INFO][ForkPoolWorker-2] ✅ 13개 완료 | 진행도 [145  / 331] - 반려동물/취미/악기
+2025-11-06 19:50:29 [INFO] 19:50:29 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [140  / 331] - 반려동물/취미/악기
+2025-11-06 19:51:50 [INFO] 19:51:50 [INFO][ForkPoolWorker-2] ✅ 17개 완료 | 진행도 [146  / 331] - 반려동물/취미/악기
+2025-11-06 19:52:30 [INFO] 19:52:30 [INFO][ForkPoolWorker-2] ✅ 4개 완료 | 진행도 [147  / 331] - 반려동물/취미/악기
+2025-11-06 19:53:55 [INFO] 19:53:55 [INFO][ForkPoolWorker-2] ✅ 9개 완료 | 진행도 [148  / 331] - 반려동물/취미/악기
+2025-11-06 19:54:32 [INFO] 19:54:32 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [151  / 331] - 반려동물/취미/악기
+2025-11-06 19:57:58 [INFO] 19:57:58 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [149  / 331] - 반려동물/취미/악기
+2025-11-06 19:58:32 [INFO] 19:58:32 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [152  / 331] - 반려동물/취미/악기
+2025-11-06 20:01:59 [INFO] 20:01:59 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [150  / 331] - 반려동물/취미/악기
+2025-11-06 20:02:00 [INFO] [33m20:02:00 [INFO][MainProcess] 💾 체크포인트 저장 (6575개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 20:02:36 [INFO] 20:02:36 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [153  / 331] - 반려동물/취미/악기
+2025-11-06 20:06:01 [INFO] 20:06:01 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [161  / 331] - 반려동물/취미/악기
+2025-11-06 20:06:35 [INFO] 20:06:35 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [154  / 331] - 반려동물/취미/악기
+2025-11-06 20:10:01 [INFO] 20:10:01 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [162  / 331] - 반려동물/취미/악기
+2025-11-06 20:10:39 [INFO] 20:10:39 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [155  / 331] - 반려동물/취미/악기
+2025-11-06 20:14:00 [INFO] 20:14:00 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [163  / 331] - 반려동물/취미/악기
+2025-11-06 20:14:40 [INFO] 20:14:40 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [156  / 331] - 반려동물/취미/악기
+2025-11-06 20:14:55 [INFO] 20:14:55 [WARNING][ForkPoolWorker-3] ❌ 무선모형RC 에러: timeout: Timed out receiving message from renderer: 13.082
+2025-11-06 20:14:55 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 20:18:00 [INFO] 20:18:00 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [164  / 331] - 반려동물/취미/악기
+2025-11-06 20:18:53 [INFO] 20:18:53 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [158  / 331] - 반려동물/취미/악기
+2025-11-06 20:20:14 [INFO] 20:20:14 [INFO][ForkPoolWorker-2] ✅ 15개 완료 | 진행도 [165  / 331] - 반려동물/취미/악기
+2025-11-06 20:22:00 [INFO] 20:22:00 [INFO][ForkPoolWorker-2] ✅ 11개 완료 | 진행도 [166  / 331] - 반려동물/취미/악기
+2025-11-06 20:22:53 [INFO] 20:22:53 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [159  / 331] - 반려동물/취미/악기
+2025-11-06 20:25:58 [INFO] 20:25:58 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [167  / 331] - 문구/오피스
+2025-11-06 20:26:57 [INFO] 20:26:57 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [160  / 331] - 반려동물/취미/악기
+2025-11-06 20:29:58 [INFO] 20:29:58 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [168  / 331] - 문구/오피스
+2025-11-06 20:30:59 [INFO] 20:30:59 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [171  / 331] - 문구/오피스
+2025-11-06 20:33:57 [INFO] 20:33:57 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [169  / 331] - 문구/오피스
+2025-11-06 20:34:59 [INFO] 20:34:59 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [172  / 331] - 문구/오피스
+2025-11-06 20:37:56 [INFO] 20:37:56 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [170  / 331] - 문구/오피스
+2025-11-06 20:37:57 [INFO] [33m20:37:57 [INFO][MainProcess] 💾 체크포인트 저장 (6594개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 20:39:00 [INFO] 20:39:00 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [173  / 331] - 문구/오피스
+2025-11-06 20:41:58 [INFO] 20:41:58 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [181  / 331] - 문구/오피스
+2025-11-06 20:42:59 [INFO] 20:42:59 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [174  / 331] - 문구/오피스
+2025-11-06 20:45:59 [INFO] 20:45:59 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [182  / 331] - 문구/오피스
+2025-11-06 20:46:59 [INFO] 20:46:59 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [175  / 331] - 문구/오피스
+2025-11-06 20:50:00 [INFO] 20:50:00 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [183  / 331] - 문구/오피스
+2025-11-06 20:51:00 [INFO] 20:51:00 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [176  / 331] - 문구/오피스
+2025-11-06 20:54:01 [INFO] 20:54:01 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [184  / 331] - 문구/오피스
+2025-11-06 20:55:00 [INFO] 20:55:00 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [177  / 331] - 문구/오피스
+2025-11-06 20:58:01 [INFO] 20:58:01 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [185  / 331] - 문구/오피스
+2025-11-06 20:59:00 [INFO] 20:59:00 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [178  / 331] - 문구/오피스
+2025-11-06 21:02:04 [INFO] 21:02:04 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [186  / 331] - 문구/오피스
+2025-11-06 21:03:05 [INFO] 21:03:05 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [179  / 331] - 문구/오피스
+2025-11-06 21:06:03 [INFO] 21:06:03 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [187  / 331] - 문구/오피스
+2025-11-06 21:07:05 [INFO] 21:07:05 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [180  / 331] - 문구/오피스
+2025-11-06 21:07:06 [INFO] [33m21:07:06 [INFO][MainProcess] 💾 체크포인트 저장 (6604개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 21:10:03 [INFO] 21:10:03 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [188  / 331] - 문구/오피스
+2025-11-06 21:11:08 [INFO] 21:11:08 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [191  / 331] - 문구/오피스
+2025-11-06 21:14:03 [INFO] 21:14:03 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [189  / 331] - 문구/오피스
+2025-11-06 21:14:18 [INFO] 21:14:18 [INFO][ForkPoolWorker-2] ✅ 1개 완료 | 진행도 [190  / 331] - 문구/오피스
+2025-11-06 21:14:19 [INFO] [33m21:14:19 [INFO][MainProcess] 💾 체크포인트 저장 (6614개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 21:15:09 [INFO] 21:15:09 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [192  / 331] - 문구/오피스
+2025-11-06 21:18:23 [INFO] 21:18:23 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [201  / 331] - 문구/오피스
+2025-11-06 21:19:08 [INFO] 21:19:08 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [193  / 331] - 문구/오피스
+2025-11-06 21:22:24 [INFO] 21:22:24 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [202  / 331] - 문구/오피스
+2025-11-06 21:23:07 [INFO] 21:23:07 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [194  / 331] - 문구/오피스
+2025-11-06 21:26:25 [INFO] 21:26:25 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [203  / 331] - 문구/오피스
+2025-11-06 21:26:40 [INFO] 21:26:40 [WARNING][ForkPoolWorker-2] ❌ 명찰/표지판 에러: timeout: Timed out receiving message from renderer: 13.172
+2025-11-06 21:26:40 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 21:27:09 [INFO] 21:27:09 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [195  / 331] - 문구/오피스
+2025-11-06 21:27:24 [INFO] 21:27:24 [WARNING][ForkPoolWorker-3] ❌ 데스크오거나이저 에러: timeout: Timed out receiving message from renderer: 13.561
+2025-11-06 21:27:24 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 21:27:39 [INFO] 21:27:39 [WARNING][ForkPoolWorker-3] ❌ 연필꽂이/펜홀더 에러: timeout: Timed out receiving message from renderer: 13.433
+2025-11-06 21:27:39 [INFO]   (Session info: chrome=142.0.7444.59)
+2025-11-06 21:30:40 [INFO] 21:30:40 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [205  / 331] - 문구/오피스
+2025-11-06 21:31:38 [INFO] 21:31:38 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [198  / 331] - 문구/오피스
+2025-11-06 21:34:43 [INFO] 21:34:43 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [206  / 331] - 문구/오피스
+2025-11-06 21:35:37 [INFO] 21:35:37 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [199  / 331] - 문구/오피스
+2025-11-06 21:38:44 [INFO] 21:38:44 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [207  / 331] - 문구/오피스
+2025-11-06 21:39:37 [INFO] 21:39:37 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [200  / 331] - 문구/오피스
+2025-11-06 21:42:46 [INFO] 21:42:46 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [208  / 331] - 문구/오피스
+2025-11-06 21:43:40 [INFO] 21:43:40 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [211  / 331] - 문구/오피스
+2025-11-06 21:46:46 [INFO] 21:46:46 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [209  / 331] - 문구/오피스
+2025-11-06 21:47:43 [INFO] 21:47:43 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [212  / 331] - 문구/오피스
+2025-11-06 21:50:47 [INFO] 21:50:47 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [210  / 331] - 문구/오피스
+2025-11-06 21:50:48 [INFO] [33m21:50:48 [INFO][MainProcess] 💾 체크포인트 저장 (6631개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-06 21:51:44 [INFO] 21:51:44 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [213  / 331] - 문구/오피스
+2025-11-06 21:54:51 [INFO] 21:54:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [221  / 331] - 문구/오피스
+2025-11-06 21:55:49 [INFO] 21:55:49 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [214  / 331] - 문구/오피스
+2025-11-06 21:58:51 [INFO] 21:58:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [222  / 331] - 문구/오피스
+2025-11-06 21:59:49 [INFO] 21:59:49 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [215  / 331] - 문구/오피스
+2025-11-06 22:02:51 [INFO] 22:02:51 [INFO][ForkPoolWorker-2] ✅ 28개 완료 | 진행도 [223  / 331] - 문구/오피스
+2025-11-06 22:03:49 [INFO] 22:03:49 [INFO][ForkPoolWorker-3] ✅ 28개 완료 | 진행도 [216  / 331] - 문구/오피스
+2025-11-06 22:03:49 [ERROR] [31m스크립트 실행 실패[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py - 스크립트 타임아웃 초과(21000s): /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-06T22:03:49.704973[0m
+2025-11-06 22:03:51 [INFO] [34m=== 스크립트 실행 시작[2/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-06T22:03:51.705348 ===[0m
+2025-11-06 22:03:52 [INFO] 22:03:52 [INFO][MainProcess] 총 6811개 중 상위 6792개 링크 병렬 점검 시작 (이전 완료 6628개 스킵)
+2025-11-06 22:03:52 [INFO] 22:03:52 [INFO][MainProcess] 각 프로세스당 10개 링크 처리 예정
+2025-11-06 22:04:11 [INFO] 22:04:11 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17340339&15main_17_03): TimeoutException
+2025-11-06 22:04:16 [INFO] 22:04:16 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11239374&15main_11_02): TimeoutException
+2025-11-06 22:04:39 [INFO] 22:04:39 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17339848&15main_17_03): TimeoutException
+2025-11-06 22:04:51 [INFO] 22:04:51 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11330082&15main_11_03): TimeoutException
+2025-11-06 22:05:06 [INFO] 22:05:06 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17331086&15main_17_03): TimeoutException
+2025-11-06 22:05:20 [INFO] 22:05:20 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11340155&15main_11_03): TimeoutException
+2025-11-06 22:05:35 [INFO] 22:05:35 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734592&15main_17_03): TimeoutException
+2025-11-06 22:06:00 [INFO] 22:06:00 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=12335701&15main_12_03): TimeoutException
+2025-11-06 22:06:02 [INFO] 22:06:02 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734597&15main_17_03): TimeoutException
+2025-11-06 22:06:29 [INFO] 22:06:29 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734588&15main_17_03): TimeoutException
+2025-11-06 22:06:56 [INFO] 22:06:56 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17338040&15main_17_03): TimeoutException
+2025-11-06 22:07:22 [INFO] 22:07:22 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734589&15main_17_03): TimeoutException
+2025-11-06 22:07:49 [INFO] 22:07:49 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734590&15main_17_03): TimeoutException
+2025-11-06 22:08:03 [INFO] 22:08:03 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17325969&15main_17_03): TimeoutException
+2025-11-06 22:08:13 [INFO] [33m22:08:13 [INFO][MainProcess] 💾 체크포인트 저장 (6631개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
