@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-11-06T22:08:13.347702",
-  "processed_links": 0,
-  "pending_links": 164,
-  "skipped_links": 6628,
+  "timestamp": "2025-11-07T05:47:32.211941",
+  "processed_links": 8,
+  "pending_links": 33,
+  "skipped_links": 6751,
   "total_links": 6811,
   "eligible_links": 6792,
-  "complete_total": 6631
+  "complete_total": 6762
 }
