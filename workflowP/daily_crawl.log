@@ -1,88 +1,87 @@
-2025-11-11 08:14:42 [INFO] [1m=== daily_crawl 시작 @ 2025-11-11T08:14:42.664995 ===[0m
-2025-11-11 08:14:42 [INFO] [2m카테고리 스크립트 최근 실행 시각: 2025-11-11T08:14:12.637186 (주 7회 정책으로 이번 주기 건너뜀)[0m
-2025-11-11 08:14:42 [INFO] [1m=== 🔁 크롤 루프 1/2 시작 ===[0m
-2025-11-11 08:14:42 [INFO] [2m주기 조건에 따라 카테고리 스크립트를 건너뜁니다: /home/runner/work/crawd/crawd/workflowP/craw/category/craw_danawa_all_categories.py[0m
-2025-11-11 08:14:42 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py @ 2025-11-11T08:14:42.665402 ===[0m
-2025-11-11 08:14:42 [INFO] 총 6811개 (prefix=https://prod.danawa.com/list/?cate=, exclude=로켓배송관)
-2025-11-11 08:14:42 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py (성공) @ 2025-11-11T08:14:42.755402 ===[0m
-2025-11-11 08:14:42 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-11T08:14:42.755563 ===[0m
-2025-11-11 08:14:43 [INFO] 08:14:43 [INFO][MainProcess] 총 6811개 중 상위 6792개 링크 병렬 점검 시작 (이전 완료 6761개 스킵)
-2025-11-11 08:14:43 [INFO] 08:14:43 [INFO][MainProcess] 각 프로세스당 10개 링크 처리 예정
-2025-11-11 08:15:08 [INFO] 08:15:08 [WARNING][ForkPoolWorker-2] ❌ https://prod.danawa.com/list/?cate=11239374&15main_11_02 에러: timeout: Timed out receiving message from renderer: 12.011
-2025-11-11 08:15:08 [INFO]   (Session info: chrome=142.0.7444.59)
-2025-11-11 08:15:13 [INFO] 08:15:13 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17340339&15main_17_03): TimeoutException
-2025-11-11 08:15:27 [INFO] 08:15:27 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11330082&15main_11_03): TimeoutException
-2025-11-11 08:15:41 [INFO] 08:15:41 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17339848&15main_17_03): TimeoutException
-2025-11-11 08:15:56 [INFO] 08:15:56 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11340155&15main_11_03): TimeoutException
-2025-11-11 08:16:08 [INFO] 08:16:08 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17331086&15main_17_03): TimeoutException
-2025-11-11 08:16:27 [INFO] 08:16:27 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=12335701&15main_12_03): TimeoutException
-2025-11-11 08:16:36 [INFO] 08:16:36 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734592&15main_17_03): TimeoutException
-2025-11-11 08:17:03 [INFO] 08:17:03 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734597&15main_17_03): TimeoutException
-2025-11-11 08:17:29 [INFO] 08:17:29 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734588&15main_17_03): TimeoutException
-2025-11-11 08:17:56 [INFO] 08:17:56 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17338040&15main_17_03): TimeoutException
-2025-11-11 08:18:23 [INFO] 08:18:23 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734589&15main_17_03): TimeoutException
-2025-11-11 08:18:39 [INFO] 08:18:39 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17325969&15main_17_03): TimeoutException
-2025-11-11 08:18:50 [INFO] 08:18:50 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734590&15main_17_03): TimeoutException
-2025-11-11 08:18:52 [INFO] [33m08:18:52 [INFO][MainProcess] 💾 체크포인트 저장 (6764개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-11 08:19:32 [INFO] 08:19:32 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21355955&15main_21_03): TimeoutException
-2025-11-11 08:19:48 [INFO] 08:19:48 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=19337855&15main_19_03): TimeoutException
-2025-11-11 08:20:19 [INFO] 08:20:19 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351084&15main_21_03): TimeoutException
-2025-11-11 08:20:50 [INFO] 08:20:50 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351085&15main_21_03): TimeoutException
-2025-11-11 08:21:20 [INFO] 08:21:20 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351087&15main_21_03): TimeoutException
-2025-11-11 08:21:50 [INFO] 08:21:50 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21350164&15main_21_03): TimeoutException
-2025-11-11 08:22:20 [INFO] 08:22:20 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21350163&15main_21_03): TimeoutException
-2025-11-11 08:22:51 [INFO] 08:22:51 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351133&15main_21_03): TimeoutException
-2025-11-11 08:23:21 [INFO] 08:23:21 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21355953&15main_21_03): TimeoutException
-2025-11-11 08:23:33 [INFO] [33m08:23:33 [INFO][MainProcess] 💾 신규 결과 없음, 기존 분할 파일 유지[0m
-2025-11-11 08:23:33 [INFO] 08:23:33 [INFO][MainProcess] ✅ 병렬 크롤링 완료: 신규 0개, 누적 6764개 저장 → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel
-2025-11-11 08:23:34 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py (성공) @ 2025-11-11T08:23:34.108778 ===[0m
-2025-11-11 08:23:34 [INFO] [34m상태 요약: 신규 0, 대기 31[0m
-2025-11-11 08:23:34 [INFO] [2m60s 대기 후 다음 루프 진행[0m
-2025-11-11 08:24:34 [INFO] [1m=== 🔁 크롤 루프 2/2 시작 ===[0m
-2025-11-11 08:24:34 [INFO] [2m주기 조건에 따라 카테고리 스크립트를 건너뜁니다: /home/runner/work/crawd/crawd/workflowP/craw/category/craw_danawa_all_categories.py[0m
-2025-11-11 08:24:34 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py @ 2025-11-11T08:24:34.109637 ===[0m
-2025-11-11 08:24:34 [INFO] 총 6811개 (prefix=https://prod.danawa.com/list/?cate=, exclude=로켓배송관)
-2025-11-11 08:24:34 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py (성공) @ 2025-11-11T08:24:34.153260 ===[0m
-2025-11-11 08:24:34 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-11T08:24:34.153363 ===[0m
-2025-11-11 08:24:34 [INFO] 08:24:34 [INFO][MainProcess] 총 6811개 중 상위 6792개 링크 병렬 점검 시작 (이전 완료 6761개 스킵)
-2025-11-11 08:24:34 [INFO] 08:24:34 [INFO][MainProcess] 각 프로세스당 10개 링크 처리 예정
-2025-11-11 08:24:52 [INFO] 08:24:52 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17340339&15main_17_03): TimeoutException
-2025-11-11 08:24:56 [INFO] 08:24:56 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11239374&15main_11_02): TimeoutException
-2025-11-11 08:25:19 [INFO] 08:25:19 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17339848&15main_17_03): TimeoutException
-2025-11-11 08:25:27 [INFO] 08:25:27 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11330082&15main_11_03): TimeoutException
-2025-11-11 08:25:46 [INFO] 08:25:46 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17331086&15main_17_03): TimeoutException
-2025-11-11 08:25:57 [INFO] 08:25:57 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11340155&15main_11_03): TimeoutException
-2025-11-11 08:26:14 [INFO] 08:26:14 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734592&15main_17_03): TimeoutException
-2025-11-11 08:26:28 [INFO] 08:26:28 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=12335701&15main_12_03): TimeoutException
-2025-11-11 08:26:40 [INFO] 08:26:40 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734597&15main_17_03): TimeoutException
-2025-11-11 08:27:07 [INFO] 08:27:07 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734588&15main_17_03): TimeoutException
-2025-11-11 08:27:34 [INFO] 08:27:34 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17338040&15main_17_03): TimeoutException
-2025-11-11 08:28:01 [INFO] 08:28:01 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734589&15main_17_03): TimeoutException
-2025-11-11 08:28:28 [INFO] 08:28:28 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734590&15main_17_03): TimeoutException
-2025-11-11 08:28:28 [INFO] 08:28:28 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17325969&15main_17_03): TimeoutException
-2025-11-11 08:28:41 [INFO] [33m08:28:41 [INFO][MainProcess] 💾 체크포인트 저장 (6764개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
-2025-11-11 08:29:08 [INFO] 08:29:08 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21355955&15main_21_03): TimeoutException
-2025-11-11 08:29:36 [INFO] 08:29:36 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=19337855&15main_19_03): TimeoutException
-2025-11-11 08:30:08 [INFO] 08:30:08 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351084&15main_21_03): TimeoutException
-2025-11-11 08:30:38 [INFO] 08:30:38 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351085&15main_21_03): TimeoutException
-2025-11-11 08:31:08 [INFO] 08:31:08 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351087&15main_21_03): TimeoutException
-2025-11-11 08:31:38 [INFO] 08:31:38 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21350164&15main_21_03): TimeoutException
-2025-11-11 08:32:08 [INFO] 08:32:08 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21350163&15main_21_03): TimeoutException
-2025-11-11 08:32:39 [INFO] 08:32:39 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351133&15main_21_03): TimeoutException
-2025-11-11 08:33:09 [INFO] 08:33:09 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21355953&15main_21_03): TimeoutException
-2025-11-11 08:33:22 [INFO] [33m08:33:22 [INFO][MainProcess] 💾 신규 결과 없음, 기존 분할 파일 유지[0m
-2025-11-11 08:33:22 [INFO] 08:33:22 [INFO][MainProcess] ✅ 병렬 크롤링 완료: 신규 0개, 누적 6764개 저장 → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel
-2025-11-11 08:33:22 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py (성공) @ 2025-11-11T08:33:22.199704 ===[0m
-2025-11-11 08:33:22 [INFO] [34m상태 요약: 신규 0, 대기 31[0m
-2025-11-11 08:33:22 [INFO] [1m=== 실행 요약 ===[0m
-2025-11-11 08:33:22 [INFO] [32m성공: 4[0m
-2025-11-11 08:33:22 [INFO] [32m  ✔ link-filter#1: A_link_filter.py[0m
-2025-11-11 08:33:22 [INFO] [32m  ✔ items#1: B_in_link_get_items.py[0m
-2025-11-11 08:33:22 [INFO] [32m  ✔ link-filter#2: A_link_filter.py[0m
-2025-11-11 08:33:22 [INFO] [32m  ✔ items#2: B_in_link_get_items.py[0m
-2025-11-11 08:33:22 [INFO] [31m실패: 0[0m
-2025-11-11 08:33:22 [INFO] [33m건너뜀: 2[0m
-2025-11-11 08:33:22 [INFO] [33m  ➖ category#1: craw_danawa_all_categories.py[0m
-2025-11-11 08:33:22 [INFO] [33m  ➖ category#2: craw_danawa_all_categories.py[0m
-2025-11-11 08:33:22 [INFO] [34m로그 파일: /home/runner/work/crawd/crawd/workflowP/daily_crawl.log[0m
-2025-11-11 08:33:22 [INFO] [1m=== daily_crawl 종료 @ 2025-11-11T08:33:22.200027 ===[0m
+2025-11-11 16:13:41 [INFO] [1m=== daily_crawl 시작 @ 2025-11-11T16:13:41.406007 ===[0m
+2025-11-11 16:13:41 [INFO] [2m카테고리 스크립트 최근 실행 시각: 2025-11-11T16:12:58.794524 (주 7회 정책으로 이번 주기 건너뜀)[0m
+2025-11-11 16:13:41 [INFO] [1m=== 🔁 크롤 루프 1/2 시작 ===[0m
+2025-11-11 16:13:41 [INFO] [2m주기 조건에 따라 카테고리 스크립트를 건너뜁니다: /home/runner/work/crawd/crawd/workflowP/craw/category/craw_danawa_all_categories.py[0m
+2025-11-11 16:13:41 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py @ 2025-11-11T16:13:41.406457 ===[0m
+2025-11-11 16:13:41 [INFO] 총 6811개 (prefix=https://prod.danawa.com/list/?cate=, exclude=로켓배송관)
+2025-11-11 16:13:41 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py (성공) @ 2025-11-11T16:13:41.462684 ===[0m
+2025-11-11 16:13:41 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-11T16:13:41.462904 ===[0m
+2025-11-11 16:13:42 [INFO] 16:13:42 [INFO][MainProcess] 총 6811개 중 상위 6792개 링크 병렬 점검 시작 (이전 완료 6761개 스킵)
+2025-11-11 16:13:42 [INFO] 16:13:42 [INFO][MainProcess] 각 프로세스당 10개 링크 처리 예정
+2025-11-11 16:14:08 [INFO] 16:14:08 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17340339&15main_17_03): TimeoutException
+2025-11-11 16:14:15 [INFO] 16:14:15 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11239374&15main_11_02): TimeoutException
+2025-11-11 16:14:35 [INFO] 16:14:35 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17339848&15main_17_03): TimeoutException
+2025-11-11 16:14:47 [INFO] 16:14:47 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11330082&15main_11_03): TimeoutException
+2025-11-11 16:15:01 [INFO] 16:15:01 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17331086&15main_17_03): TimeoutException
+2025-11-11 16:15:15 [INFO] 16:15:15 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11340155&15main_11_03): TimeoutException
+2025-11-11 16:15:28 [INFO] 16:15:28 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734592&15main_17_03): TimeoutException
+2025-11-11 16:15:46 [INFO] 16:15:46 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=12335701&15main_12_03): TimeoutException
+2025-11-11 16:15:54 [INFO] 16:15:54 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734597&15main_17_03): TimeoutException
+2025-11-11 16:16:21 [INFO] 16:16:21 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734588&15main_17_03): TimeoutException
+2025-11-11 16:16:47 [INFO] 16:16:47 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17338040&15main_17_03): TimeoutException
+2025-11-11 16:17:14 [INFO] 16:17:14 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734589&15main_17_03): TimeoutException
+2025-11-11 16:17:40 [INFO] 16:17:40 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734590&15main_17_03): TimeoutException
+2025-11-11 16:17:42 [INFO] 16:17:42 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17325969&15main_17_03): TimeoutException
+2025-11-11 16:17:55 [INFO] [33m16:17:55 [INFO][MainProcess] 💾 체크포인트 저장 (6764개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-11 16:18:19 [INFO] 16:18:19 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21355955&15main_21_03): TimeoutException
+2025-11-11 16:18:47 [INFO] 16:18:47 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=19337855&15main_19_03): TimeoutException
+2025-11-11 16:19:18 [INFO] 16:19:18 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351084&15main_21_03): TimeoutException
+2025-11-11 16:19:48 [INFO] 16:19:48 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351085&15main_21_03): TimeoutException
+2025-11-11 16:20:17 [INFO] 16:20:17 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351087&15main_21_03): TimeoutException
+2025-11-11 16:20:47 [INFO] 16:20:47 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21350164&15main_21_03): TimeoutException
+2025-11-11 16:21:17 [INFO] 16:21:17 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21350163&15main_21_03): TimeoutException
+2025-11-11 16:21:47 [INFO] 16:21:47 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351133&15main_21_03): TimeoutException
+2025-11-11 16:22:16 [INFO] 16:22:16 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21355953&15main_21_03): TimeoutException
+2025-11-11 16:22:28 [INFO] [33m16:22:28 [INFO][MainProcess] 💾 신규 결과 없음, 기존 분할 파일 유지[0m
+2025-11-11 16:22:28 [INFO] 16:22:28 [INFO][MainProcess] ✅ 병렬 크롤링 완료: 신규 0개, 누적 6764개 저장 → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel
+2025-11-11 16:22:28 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py (성공) @ 2025-11-11T16:22:28.975463 ===[0m
+2025-11-11 16:22:28 [INFO] [34m상태 요약: 신규 0, 대기 31[0m
+2025-11-11 16:22:28 [INFO] [2m60s 대기 후 다음 루프 진행[0m
+2025-11-11 16:23:28 [INFO] [1m=== 🔁 크롤 루프 2/2 시작 ===[0m
+2025-11-11 16:23:28 [INFO] [2m주기 조건에 따라 카테고리 스크립트를 건너뜁니다: /home/runner/work/crawd/crawd/workflowP/craw/category/craw_danawa_all_categories.py[0m
+2025-11-11 16:23:28 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py @ 2025-11-11T16:23:28.976382 ===[0m
+2025-11-11 16:23:29 [INFO] 총 6811개 (prefix=https://prod.danawa.com/list/?cate=, exclude=로켓배송관)
+2025-11-11 16:23:29 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/A_link_filter.py (성공) @ 2025-11-11T16:23:29.021110 ===[0m
+2025-11-11 16:23:29 [INFO] [34m=== 스크립트 실행 시작[1/3]: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py @ 2025-11-11T16:23:29.021241 ===[0m
+2025-11-11 16:23:29 [INFO] 16:23:29 [INFO][MainProcess] 총 6811개 중 상위 6792개 링크 병렬 점검 시작 (이전 완료 6761개 스킵)
+2025-11-11 16:23:29 [INFO] 16:23:29 [INFO][MainProcess] 각 프로세스당 10개 링크 처리 예정
+2025-11-11 16:23:47 [INFO] 16:23:47 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17340339&15main_17_03): TimeoutException
+2025-11-11 16:23:50 [INFO] 16:23:50 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11239374&15main_11_02): TimeoutException
+2025-11-11 16:24:14 [INFO] 16:24:14 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17339848&15main_17_03): TimeoutException
+2025-11-11 16:24:20 [INFO] 16:24:20 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11330082&15main_11_03): TimeoutException
+2025-11-11 16:24:40 [INFO] 16:24:40 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17331086&15main_17_03): TimeoutException
+2025-11-11 16:24:49 [INFO] 16:24:49 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=11340155&15main_11_03): TimeoutException
+2025-11-11 16:25:07 [INFO] 16:25:07 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734592&15main_17_03): TimeoutException
+2025-11-11 16:25:18 [INFO] 16:25:18 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=12335701&15main_12_03): TimeoutException
+2025-11-11 16:25:34 [INFO] 16:25:34 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734597&15main_17_03): TimeoutException
+2025-11-11 16:26:01 [INFO] 16:26:01 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734588&15main_17_03): TimeoutException
+2025-11-11 16:26:27 [INFO] 16:26:27 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17338040&15main_17_03): TimeoutException
+2025-11-11 16:26:54 [INFO] 16:26:54 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734589&15main_17_03): TimeoutException
+2025-11-11 16:27:13 [INFO] 16:27:13 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=17325969&15main_17_03): TimeoutException
+2025-11-11 16:27:20 [INFO] 16:27:20 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=1734590&15main_17_03): TimeoutException
+2025-11-11 16:27:26 [INFO] [33m16:27:26 [INFO][MainProcess] 💾 체크포인트 저장 (6764개) → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel[0m
+2025-11-11 16:27:59 [INFO] 16:27:59 [WARNING][ForkPoolWorker-3] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21355955&15main_21_03): TimeoutException
+2025-11-11 16:28:18 [INFO] 16:28:18 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=19337855&15main_19_03): TimeoutException
+2025-11-11 16:28:49 [INFO] 16:28:49 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351084&15main_21_03): TimeoutException
+2025-11-11 16:29:20 [INFO] 16:29:20 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351085&15main_21_03): TimeoutException
+2025-11-11 16:29:49 [INFO] 16:29:49 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351087&15main_21_03): TimeoutException
+2025-11-11 16:30:19 [INFO] 16:30:19 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21350164&15main_21_03): TimeoutException
+2025-11-11 16:30:49 [INFO] 16:30:49 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21350163&15main_21_03): TimeoutException
+2025-11-11 16:31:18 [INFO] 16:31:18 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21351133&15main_21_03): TimeoutException
+2025-11-11 16:31:48 [INFO] 16:31:48 [WARNING][ForkPoolWorker-2] 목록형 보기 탭을 찾지 못했습니다 (url=https://prod.danawa.com/list/?cate=21355953&15main_21_03): TimeoutException
+2025-11-11 16:32:00 [INFO] [33m16:32:00 [INFO][MainProcess] 💾 신규 결과 없음, 기존 분할 파일 유지[0m
+2025-11-11 16:32:00 [INFO] 16:32:00 [INFO][MainProcess] ✅ 병렬 크롤링 완료: 신규 0개, 누적 6764개 저장 → /home/runner/work/crawd/crawd/workflowP/craw/data/quick_text_probe_parallel
+2025-11-11 16:32:00 [INFO] [32m=== 스크립트 실행 종료: /home/runner/work/crawd/crawd/workflowP/craw/items/B_in_link_get_items.py (성공) @ 2025-11-11T16:32:00.421390 ===[0m
+2025-11-11 16:32:00 [INFO] [34m상태 요약: 신규 0, 대기 31[0m
+2025-11-11 16:32:00 [INFO] [1m=== 실행 요약 ===[0m
+2025-11-11 16:32:00 [INFO] [32m성공: 4[0m
+2025-11-11 16:32:00 [INFO] [32m  ✔ link-filter#1: A_link_filter.py[0m
+2025-11-11 16:32:00 [INFO] [32m  ✔ items#1: B_in_link_get_items.py[0m
+2025-11-11 16:32:00 [INFO] [32m  ✔ link-filter#2: A_link_filter.py[0m
+2025-11-11 16:32:00 [INFO] [32m  ✔ items#2: B_in_link_get_items.py[0m
+2025-11-11 16:32:00 [INFO] [31m실패: 0[0m
+2025-11-11 16:32:00 [INFO] [33m건너뜀: 2[0m
+2025-11-11 16:32:00 [INFO] [33m  ➖ category#1: craw_danawa_all_categories.py[0m
+2025-11-11 16:32:00 [INFO] [33m  ➖ category#2: craw_danawa_all_categories.py[0m
+2025-11-11 16:32:00 [INFO] [34m로그 파일: /home/runner/work/crawd/crawd/workflowP/daily_crawl.log[0m
+2025-11-11 16:32:00 [INFO] [1m=== daily_crawl 종료 @ 2025-11-11T16:32:00.421892 ===[0m
